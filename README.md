@@ -1,10 +1,29 @@
-# AI-Workflow persistent state store
+# AI-Workflow — alpha state store (`dev`)
 
-This repository contains **mutable state** for the independent AI-Workflow project.
+**EXPERIMENTAL: branch `dev` only.** This repository stores mutable state for the independent AI-Workflow project. Rules are defined in [ai-workflow/dev](https://github.com/massimilianonardi-ai/ai-workflow/tree/dev), not in these data files.
 
-- `main` is an initialization-only baseline. Do not write experimental tasks, conversations or checkpoints here.
-- `dev` is the isolated experimental state branch used by the AI-Workflow alpha; no automatic synchronization or deployment is implied.
-- The authoritative behavior and protocol are defined in `massimilianonardi-ai/ai-workflow`, not by this repository's directory names.
-- State must be written only with verified authorization and conflict detection. Never invent conversation IDs, approvals, evidence or successful persistence.
+The repository's `main` contains **only the one-time initialization README**. All experiments and future state records belong on `dev` and must be authorized and verified.
 
-The initial commit is a one-time technical prerequisite for creating `dev` in a previously empty Git repository. It **does not activate** the alpha.
+## Live logical layout (created only as needed)
+
+```text
+conversations/<chat-id>/branch-N.yaml
+requests/<chat-id>/N-000001.yaml
+tasks/<task-id>/
+  baseline-v001.md
+  task-state.md
+  task-log.md
+  handoff.md
+  task-specification.md    # only for design/development tasks
+```
+
+No real conversation IDs or task records have been initialized by this branch setup. **Do not treat tests/fixtures as live state**; they contain invented synthetic identifiers for tests only.
+
+- `conversations/`: branch checkpoint and task associations, not a transcript.
+- `requests/`: immutable checkpoint deltas used to reconstruct associations at an earlier fork point.
+- `tasks/`: immutable authorized baseline revisions, current truth, append-only event history and restart handoff.
+- `tests/fixtures/`: explicitly synthetic data for repository-write verification, isolated from live paths.
+
+Follow [doc/alpha-checkpoints.md](doc/alpha-checkpoints.md) and the approved identity contract in [ai-workflow/dev/doc/conversation-identity.md](https://github.com/massimilianonardi-ai/ai-workflow/blob/dev/doc/conversation-identity.md).
+
+**Safety boundaries:** do not infer chat identity from example data, do not write to `main`, and do not claim persistence without read-back. A successful repository write alone does not activate ChatGPT Project instructions or enforce automatic cross-chat tracking.
