@@ -1,4 +1,5 @@
 # SYNTHETIC FIXTURE: not a real conversation
 created_at: '2026-11-10T16:16:00+01:00'
-message_id: 1
-tasks: []
+message_id: 2
+tasks:
+  - task:fixture-a

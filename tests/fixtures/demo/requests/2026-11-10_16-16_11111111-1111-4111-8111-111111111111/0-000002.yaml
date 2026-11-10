@@ -1,0 +1,7 @@
+# SYNTHETIC FIXTURE: not a real request
+request_ref: fixture:request-2
+tasks_added:
+  - task:fixture-a
+tasks_removed: []
+event_refs:
+  - task:fixture-a#EV-0001
