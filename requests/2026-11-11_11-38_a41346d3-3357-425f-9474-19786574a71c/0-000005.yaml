@@ -1,0 +1,8 @@
+source_checkpoint:
+  branch_id: 0
+  message_id: 4
+request_refs: null
+tasks_added: []
+tasks_removed: []
+event_refs: []
+checkpoint_integrity: historical_gap

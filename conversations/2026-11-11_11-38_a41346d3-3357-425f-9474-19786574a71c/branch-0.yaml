@@ -1,0 +1,6 @@
+created_at: '2026-11-11T11:38:00+01:00'
+message_id: 5
+tasks: null
+sync_gaps:
+  - [1, 4]
+synchronization: incomplete
