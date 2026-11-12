@@ -15,7 +15,7 @@ All files are per-task/per-conversation. No global `tasks.yaml` registry or seco
 
 ## Git checkpoint algorithm
 
-Use a single Git tree and commit for each meaningful multi-file checkpoint when the host supplies authorized GitHub tools:
+Use a single Git tree and commit for **EVERY assistant-response checkpoint** (even when no task changed), provided the host exposes authorized writable GitHub tools. Task documents remain conditional; the request record and conversation-branch checkpoint are unconditional:
 
 1. Read the current `dev` Git ref `H`, the tree at `H`, and all relevant task/branch records; verify the incoming source marker and approval boundaries.
 2. Compute the next checkpoint and request delta. For example, source `branch-0/1` and persisted `branch-0/1` implies next `branch-0/2`. If `source < persisted`, reconstruct task associations **at source** from immutable request deltas; reserve the next branch number without overwriting another branch. If `source > persisted` or a pending write is unresolved, investigate; do not blindly fork.
@@ -34,3 +34,13 @@ At checkpoint `0/1`, tasks might be `[]`; at `0/2` a task `fixture-a` may be ass
 Git CAS protects against lost updates **only when the conditional tool/action enforces its expected-head precondition correctly**. Test and record this property; do not assume it from an API label. Actual ChatGPT host still needs available connectors, an unambiguous identity and a configured experimental bootstrap. No background task, automatic chat ID or tool execution is created by these Markdown files.
 
 When a connection error occurs after a commit, perform read-back and compare records before concluding that the write failed or succeeded. Never present synthetic fixtures as user messages.
+
+## v0.2.2 per-response checkpoint correction
+
+- Every response requires a new `requests/<chat-id>/N-<six-digit-message>.yaml` record and a branch-head update on `conversations/<chat-id>/branch-N.yaml`, including a reply with no task changes.
+- Task event files, baselines and handoffs are **not** needlessly rewritten when only the conversation counter advances.
+- `source_checkpoint`, `request_refs: null` (when unavailable), empty `tasks_added`/`tasks_removed`, `event_refs`, and `checkpoint_integrity` make unchanged responses explicit.
+- For older unrecoverable `sync = pending` markers, carry `sync_gaps: [[start,end]]` and `synchronization: incomplete` in the branch. Do not manufacture old request records.
+- Only an actual conditional Git ref update **plus file read-back** is evidence of persistence. `persisted_with_gaps` means the new checkpoint exists but the marker remains `sync = pending`.
+- If writable GitHub actions are absent in the host, report `storage_unavailable`. If they were available but not invoked, report `write_not_attempted`, not "no task changed".
+- The separately maintained protocol at `ai-workflow/state/protocol.md` and its connector runbook define the active operational method. Repository files alone do not intercept ChatGPT responses.
