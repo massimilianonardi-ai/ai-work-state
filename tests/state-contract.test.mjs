@@ -59,3 +59,19 @@ test('single atomic commit and CAS precondition are documented without invented 
   assert.match(p, /compare-and-swap expected head/);
   assert.match(p, /Only then claim persistence confirmed/);
 });
+
+test('two real Git commits persisted independent no-task-change checkpoint records', () => {
+  const id='2026-11-12_12-50_a41346d3-3357-425f-9474-19786574a71c';
+  const rootPath='tests/fixtures/no-task-change/';
+  const branch=read(rootPath+'conversations/'+id+'/branch-0.yaml');
+  const a=read(rootPath+'requests/'+id+'/0-000001.yaml');
+  const b=read(rootPath+'requests/'+id+'/0-000002.yaml');
+  assert.match(branch,/^message_id: 2$/m);
+  assert.match(branch,/^tasks: \[\]$/m);
+  assert.match(branch,/synchronization: complete/);
+  assert.match(a,/source_checkpoint: 0/);
+  assert.match(b,/source_checkpoint: 1/);
+  assert.match(a,/tasks_added: \[\]/);
+  assert.match(b,/tasks_added: \[\]/);
+  assert.equal(existsSync(resolve(root,'conversations',id)),false);
+});
