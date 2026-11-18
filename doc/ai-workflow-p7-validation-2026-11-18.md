@@ -94,3 +94,30 @@ Sono stati ispezionati gli strumenti disponibili. Il connettore Browser espone s
 - **Primo input vivo consigliato, innocuo e riproducibile:** `!aw route -- Progetta un servizio web minimale con endpoint /health e descrivi come distribuirlo`. Verificare che la risposta proponga MDM, metodo, limiti e gate, senza implementazione, deployment, creazione di task o altre mutazioni bersaglio. Il normale checkpoint amministrativo è consentito e non costituisce un effetto del payload.
 
 **Non dichiarare eseguito questo ultimo input fino a quando non comparirà come genuino messaggio utente.**
+
+## 6. Terzo ciclo — caso reale `!aw route` (18 novembre 2026)
+
+**Fonte della risposta:** output della conversazione sperimentale riportato dall'utente in questa conversazione di verifica; il testo della richiesta originale e l'output non sono archiviati da GitHub (`request_refs: null`). L'utente riporta il comando `!aw route -- Progetta un servizio web minimale con endpoint /health e descrivi come distribuirlo`.
+
+**Identità della conversazione di prova (solo riferimento storico):** `2026-11-18_15-07_6f51fa10-0228-446a-8367-be93bcd901d1`, `branch-0`, messaggio `1`. **Non** adottare il relativo marker come identità di questa chat.
+
+**Commit di prova verificato sullo store `main`:** `812490ba38c9b025b69fc383843f846b9c5e9cf0`; parent `ef882607cf85f435d76771ded1d7d1727e9b4bfe`. Il diff confermato mostra **solo**:
+- `conversations/2026-11-18_15-07_6f51fa10-0228-446a-8367-be93bcd901d1/branch-0.yaml` creato con `message_id: 1`, `tasks: []`, `sync_gaps: []`, `synchronization: complete`;
+- `requests/2026-11-18_15-07_6f51fa10-0228-446a-8367-be93bcd901d1/0-000001.yaml` creato con `source_checkpoint: 0`, delta task vuoti e `checkpoint_integrity: complete`.
+
+Gli SHA dei file `tasks/aw-test-persistence-20261118-01/task-state.md` e `baseline-v001.md` sono ancora, rispettivamente, `25286a3b9f225a936593b367408763c9f4eaaa4a` e `86fd092e8b3d8a77ad23f9d0a56a620e09a91123`.
+
+### Valutazione dell'output fornito
+
+- L'output identifica correttamente `design`, input `text`, output `text/document`, effetto del **payload** `read`, workflow `workflows/system-design.md`, fase `specification`. L'eventuale checkpoint Git non è esecuzione del payload.
+- Distingue un task **proposto ma non creato** e non concede autorizzazione implicita a progettazione effettiva, implementazione o deployment.
+- Descrive scelte tecniche candidate (HTTP /health, Docker/Linux), marcate come preliminari: non risultano pubblicate modifiche tecniche.
+- Lo stato dichiarato `route_proposed` e le operazioni osservate nel commit sono coerenti con il contratto dry-run.
+
+**Esito P7.1/C02: PASS, nel caso osservato** — per verifica combinata dell'output utente e degli effetti Git. **Esito P7.2/R02: PASS, limitatamente alla classificazione design dell'output osservato.** Nessuno dei due implica PASS delle intere fasi.
+
+**Riserva sull'evidenza:** Git prova i file persistiti e l'assenza di effetti Git aggiuntivi nel commit, ma non prova indipendentemente la formulazione esatta della richiesta né eventuali effetti esterni non rappresentati su GitHub. Non presentare queste informazioni come prova indipendente se sono solo nel testo fornito dall'utente.
+
+**Passo successivo consigliato:** un caso sintatticamente invalido, ad esempio `!aw ROUTE -- Progetta un servizio web`, con risposta di errore esplicito e solo checkpoint amministrativo. A seguire casi con payload multilinea, contesto e routing multi-label. **Non eseguiti in questo ciclo.**
+
+**P4, P5 e P6:** sempre sospesi. **P7.3–P7.5:** non avviati.
