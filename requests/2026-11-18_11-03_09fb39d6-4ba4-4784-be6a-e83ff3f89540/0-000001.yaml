@@ -1,0 +1,7 @@
+source_checkpoint: 0
+request_refs: null
+tasks_added:
+  - "task:aw-test-persistence-20261118-01"
+tasks_removed: []
+event_refs: []
+checkpoint_integrity: complete
