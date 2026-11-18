@@ -67,3 +67,30 @@ Il catalogo `routing/intents.yaml` definisce le dimensioni `operation`, `input`,
 - P7.3, P7.4 e P7.5 non ancora avviati. P4, P5 e P6 rimangono sospesi.
 
 **Conclusione:** prerequisiti documentali disponibili e coerenti; nessuna anomalia certa rilevata nel solo esame del contratto; completamento comportamentale dei test ancora da dimostrare.
+
+## 5. Secondo ciclo P7.1/P7.2 — recupero di prove reali (18 novembre 2026)
+
+**Motivo:** l'utente ha autorizzato a proseguire i controlli P7.1 e P7.2 con `procedi`. Il bootstrap e il ref di stato sono stati nuovamente verificati.
+
+### Capacità di test nel contesto corrente
+
+Sono stati ispezionati gli strumenti disponibili. Il connettore Browser espone soltanto `list_tabs` e `get_tab_context`, entrambi di lettura; non risulta un'azione autorizzata per inviare messaggi utente a un'altra sessione ChatGPT. Non sono stati introdotti runtime, script o nuovi servizi. Una risposta dell'assistente a un comando fittizio in questo documento **non** dimostra il comportamento del dispatcher sui veri messaggi utente.
+
+### Evidenze end-to-end storiche riutilizzate
+
+| Test collegato | Evidenza | Controllo sui file | Conclusione circoscritta |
+|---|---|---|---|
+| P7.1 C04 `!aw sync` | P1.3, commit `e15b470bd88a63db68ac236a2d94263371f00b29` | branch della chat P1 a `0/4`, `sync_gaps: []`, checkpoint `0-000003.yaml` source=2 e `0-000004.yaml` source=3, presenti al commit | PASS storico per il caso specifico di recupero pending |
+| P7.1 C05 `!aw resume --context task:aw-test-persistence-20261118-01` | P3.3, commit `6a6cd2c347d2e3c9a1d0300adbea660542500ff2` | nuova chat con `tasks: [task:aw-test-persistence-20261118-01]`, `message_id: 1`; task-state blob `25286a3b9f225a936593b367408763c9f4eaaa4a` invariato | PASS storico per recupero senza duplicare o alterare il task |
+| P7.2 R08 `procedi` | Turni della conversazione P7, checkpoint precedenti `0/6` e prossimo `0/7` | confermare `tasks: []`, nessuna scrittura di task nel diff | comportamento osservato di continuazione, non validazione di tutte le classi MDM |
+
+**Limite di provenienza:** i file Git provano gli effetti e l'integrità dei checkpoint. La formulazione esatta dei comandi storici viene dal rapporto P1–P3 e dal contesto della conversazione, perché `request_refs: null` non archivia il messaggio utente originale; non presentare Git come prova indipendente dei caratteri digitati.
+
+### Esiti aggiornati
+
+- **P7.1:** 2 casi già verificati storicamente (C04, C05); gli altri casi, in particolare i formati validi e invalidi e il dry-run `route`, attendono messaggi utente genuini. **PARTIAL** (non PASS complessivo).
+- **P7.2:** il caso contestuale R08 è osservato; la matrice di 9 scenari resta documentale per gli altri scenari. **PARTIAL**.
+- P7.3–P7.5 non sono stati avviati; P4–P6 rimangono sospesi.
+- **Primo input vivo consigliato, innocuo e riproducibile:** `!aw route -- Progetta un servizio web minimale con endpoint /health e descrivi come distribuirlo`. Verificare che la risposta proponga MDM, metodo, limiti e gate, senza implementazione, deployment, creazione di task o altre mutazioni bersaglio. Il normale checkpoint amministrativo è consentito e non costituisce un effetto del payload.
+
+**Non dichiarare eseguito questo ultimo input fino a quando non comparirà come genuino messaggio utente.**
