@@ -187,3 +187,23 @@ L'output riportato riconosce il comando come valido, usa `design` come intento p
 **P4/P5/P6:** sospesi. **P7.3/P7.4/P7.5:** non avviati.
 
 **Prossimo caso suggerito:** C13, duplicazione di `--context` in `!aw route --context a --context b -- Progetta un servizio web`, errore di sintassi previsto, nessuna attività bersaglio.
+
+## 10. Settimo ciclo — doppio `--context` (18 novembre 2026)
+
+**Caso P7.1/C13**: output di una distinta conversazione sperimentale fornito dall'utente. Il comando riportato è `!aw route --context a --context b -- Progetta un servizio web`. La risposta riportata restituisce errore esplicito per la duplicazione di `--context`, fornisce la sintassi valida e dichiara nessun routing, task o workflow avviato. Questo comportamento è conforme a `routing/commands.md` (un solo `--context` consentito).
+
+**Verifiche Git indipendenti**:
+- Commit `76abf08365d45ddb1ca3c88c4bb7ce90760d29f9`, parent `b9581161772332e45ab28853e7e4b4d79a4f973b`, tree `907bb3b616f329975df3e99490cc45f1db69eb83`, repository `massimilianonardi-ai/ai-work-state`, branch `main`.
+- Diff del commit: due soli file aggiunti: `conversations/2026-11-18_15-50_66c47bcf-283f-4197-9136-1b34a02c6847/branch-0.yaml` e `requests/2026-11-18_15-50_66c47bcf-283f-4197-9136-1b34a02c6847/0-000001.yaml`.
+- Stato conversazione sperimentale: `message_id: 1`, `tasks: []`, `sync_gaps: []`, `synchronization: complete`. Request checkpoint `source_checkpoint: 0`, `request_refs: null`, delta task vuoti, `checkpoint_integrity: complete`.
+- Il task storico `tasks/aw-test-persistence-20261118-01/task-state.md` conserva lo SHA `25286a3b9f225a936593b367408763c9f4eaaa4a` e la baseline `baseline-v001.md` lo SHA `86fd092e8b3d8a77ad23f9d0a56a620e09a91123`.
+
+**Esito: C13 PASS nel caso osservato** (testo riportato dall'utente e verifica indipendente degli effetti Git). GitHub non conserva il comando originale, poiché `request_refs: null`; non attribuire al checkpoint una prova autonoma del testo digitato o di effetti esterni non registrati.
+
+**Riepilogo P7.1:** C02, C09, C10, C13, C14 PASS nei test osservati; C04, C05 PASS storici circoscritti. Gli altri casi restano non verificati. P7.1 complessivo **PARTIAL**.
+
+**P7.2:** R02 e R07 PASS nei casi osservati, R08 continuazione osservata; le altre classi di routing restano da verificare. P7.2 complessivo **PARTIAL**.
+
+**Prossimo caso proposto:** C01, `!aw help`, con output informativo soltanto e checkpoint amministrativo. In alternativa, un caso limite di riconoscimento namespace (C11/C15) per verificare che testo inizialmente non corrispondente a `!aw ` non venga interpretato come comando.
+
+P4, P5, P6 ancora sospesi. P7.3–P7.5 non avviati.
