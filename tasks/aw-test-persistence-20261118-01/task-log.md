@@ -31,3 +31,10 @@ Policy: append-only, factual event summaries.
 - **Decision status:** draft for checklist content; not execution-approved.
 - **Evidence:** `task-specification.md` in the task's initial checkpoint.
 - **Effect:** Documentation prepared; no operational change.
+
+### EV-0003 — 2026-11-18T10:55:06+01:00 — Partial checklist requirements approval (TEST P3.2)
+- **Source:** Current user message TEST P3.2; native message reference unavailable.
+- **What happened:** User approved only requirement R-01 (verify service reachability) and R-02 (verify expected HTTP response). Explicitly excluded approval of the checklist as a whole and prohibited running real checks.
+- **Decision status:** accepted for R-01 and R-02 as requirements only; other checklist items remain proposals; **no execution approval**.
+- **Evidence:** Explicit user direction in the current conversation; resulting `task-specification.md` and `task-state.md`.
+- **Effect:** Specification and canonical decisions updated, task remains `refining`, parent/dependencies unchanged, immutable `baseline-v001.md` unchanged; no checks performed and no new tasks created.
