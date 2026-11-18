@@ -156,3 +156,34 @@ Task P3 invariato: SHA `task-state.md` = `25286a3b9f225a936593b367408763c9f4eaaa
 **Casi coperti sino a questo ciclo:** C02 route dry-run, C09 payload mancante, C10 case-sensitive, C04 sync storico, C05 resume storico. Gli altri casi di P7.1 e P7.2 restano incompleti. **P7.1/P7.2 = PARTIAL complessivo.** P4–P6 ancora sospesi, P7.3–P7.5 non avviati.
 
 **Test successivo suggerito:** C14, payload multilinea; combinare eventualmente con routing multi-label R07, senza autorizzare task o mutazioni, usando `!aw route --` seguito da una richiesta su due righe. Nel dry-run deve esserci solo proposta, senza eseguire la richiesta.
+
+## 9. Sesto ciclo — comando multilinea e routing composito (18 novembre 2026)
+
+**Input e output osservati:** l'utente ha riportato l'output di una conversazione sperimentale separata. L'input di prova proposto era:
+```text
+!aw route --
+Analizza i log di errore di un servizio web.
+Individua le possibili cause e proponi un'architettura correttiva.
+```
+L'output riportato riconosce il comando come valido, usa `design` come intento primario, `diagnose` secondario e `research` e `validate` come supporto. Seleziona `workflows/system-design.md` e fase `specification`, senza avviare analisi dei log, diagnosi, progettazione, task o deployment.
+
+**Evidenza GitHub verificata:**
+- Repository `massimilianonardi-ai/ai-work-state`, `main`, commit `8cd6583a35fb327af9ea51bda1a1a99f6ef1cf35`, parent `6fd50b7b02ebe507ba10a1875d62cffd4e958802`, tree `e4017127cc66ee6db6abb8e95826942c76fc399a`.
+- La conversazione di prova `2026-11-18_15-30_cd4deca5-dd70-4213-9a26-b5d937619faf` ha `message_id: 1`, `tasks: []`, `sync_gaps: []`, `synchronization: complete`.
+- Il relativo request checkpoint `0-000001.yaml` contiene `source_checkpoint: 0`, `request_refs: null`, delta task vuoti e `checkpoint_integrity: complete`.
+- Diff col parent: soltanto i due file amministrativi della conversazione sperimentale; nessun task o documento di regole modificato.
+- Blob del task P3 invariato `25286a3b9f225a936593b367408763c9f4eaaa4a`; baseline invariata `86fd092e8b3d8a77ad23f9d0a56a620e09a91123`.
+
+**Valutazione P7.1/C14:** **PASS per il caso osservato**. Il payload multilinea, riferito dall'utente, è stato elaborato senza errori di sintassi né esecuzione del payload.
+
+**Valutazione P7.2/R07:** **PASS per il caso osservato**. Il routing ha riconosciuto la composizione `design + diagnose` con `research/validate` subordinati senza creare workflow autonomi o due fasi principali, coerentemente con `routing/intents.yaml` e `workflows/system-design.md`.
+
+**Rilievo non bloccante:** la risposta descrive l'input come `text, structured`. Per il messaggio attuale, l'input osservabile è `text`; i log, che potrebbero essere strutturati, non erano stati forniti. Il risultato dovrebbe distinguere input corrente e input atteso per l'esecuzione effettiva. Anche `artifact_write` riguarda un possibile effetto futuro, non il comando dry-run.
+
+**Limiti probatori:** la risposta e il testo originale del comando sono stati riportati dall'utente, mentre il commit Git dimostra direttamente la sola persistenza e gli effetti in repository. `request_refs: null` non costituisce un archivio del prompt originale.
+
+**Progresso P7.1:** C02, C09, C10, C14 PASS per casi osservati; C04 e C05 PASS storici circoscritti. Altri casi non eseguiti. **P7.1 = PARTIAL**.
+**Progresso P7.2:** design R02 e composito R07 PASS nei casi osservati; continuazione R08 osservata; altre classi non tutte provate. **P7.2 = PARTIAL**.
+**P4/P5/P6:** sospesi. **P7.3/P7.4/P7.5:** non avviati.
+
+**Prossimo caso suggerito:** C13, duplicazione di `--context` in `!aw route --context a --context b -- Progetta un servizio web`, errore di sintassi previsto, nessuna attività bersaglio.
