@@ -140,3 +140,19 @@ Gli SHA dei file `tasks/aw-test-persistence-20261118-01/task-state.md` e `baseli
 **Stato P7.1:** C02 e C10 verificati nel nuovo ciclo; C04 e C05 riutilizzati come PASS storici circoscritti; restanti casi non completati. **P7.1 complessivo PARTIAL**.
 **Stato P7.2:** il caso di routing `design` è verificato nel precedente test valido; altri scenari non completati. **P7.2 complessivo PARTIAL**.
 P4, P5, P6 sospesi; P7.3–P7.5 non avviati.
+
+## 8. Quinto ciclo — comando `!aw route` senza payload (18 novembre 2026)
+
+**Input e risposta:** l'utente ha riportato il risultato di una distinta conversazione sperimentale il cui input era `!aw route`. L'output segnala correttamente payload obbligatorio mancante, ricorda `!aw route -- REQUEST`, non esegue routing, non crea task, non avvia fasi e dichiara soltanto il checkpoint amministrativo.
+
+**Verifica GitHub:** sul repository `massimilianonardi-ai/ai-work-state`, ref `main`, il commit `fca3d0994af43dd553470423d1f89096ea5644ef` ha parent `82b30d56937d5397ee6ddaf75b6cdb67b949df59` e tree `3e41471683267f71d03e98a786efa2d15804d880`. Il diff rispetto al parent elenca soltanto due aggiunte:
+- `conversations/2026-11-18_15-24_ecae1fef-53a0-41dd-a43d-0338be10e36b/branch-0.yaml`, `message_id: 1`, `tasks: []`, `sync_gaps: []`, `synchronization: complete`.
+- `requests/2026-11-18_15-24_ecae1fef-53a0-41dd-a43d-0338be10e36b/0-000001.yaml`, `source_checkpoint: 0`, delta task vuoti, `checkpoint_integrity: complete`.
+
+Task P3 invariato: SHA `task-state.md` = `25286a3b9f225a936593b367408763c9f4eaaa4a`; SHA `baseline-v001.md` = `86fd092e8b3d8a77ad23f9d0a56a620e09a91123`.
+
+**Esito P7.1/C09:** **PASS per il caso osservato**, mediante correlazione tra testo riportato e read-back dei soli effetti Git. Il commit non prova autonomamente le parole digitate (`request_refs: null`) né costituisce prova di assenza di effetti esterni non registrati su GitHub.
+
+**Casi coperti sino a questo ciclo:** C02 route dry-run, C09 payload mancante, C10 case-sensitive, C04 sync storico, C05 resume storico. Gli altri casi di P7.1 e P7.2 restano incompleti. **P7.1/P7.2 = PARTIAL complessivo.** P4–P6 ancora sospesi, P7.3–P7.5 non avviati.
+
+**Test successivo suggerito:** C14, payload multilinea; combinare eventualmente con routing multi-label R07, senza autorizzare task o mutazioni, usando `!aw route --` seguito da una richiesta su due righe. Nel dry-run deve esserci solo proposta, senza eseguire la richiesta.
