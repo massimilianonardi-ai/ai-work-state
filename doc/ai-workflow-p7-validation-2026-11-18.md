@@ -121,3 +121,22 @@ Gli SHA dei file `tasks/aw-test-persistence-20261118-01/task-state.md` e `baseli
 **Passo successivo consigliato:** un caso sintatticamente invalido, ad esempio `!aw ROUTE -- Progetta un servizio web`, con risposta di errore esplicito e solo checkpoint amministrativo. A seguire casi con payload multilinea, contesto e routing multi-label. **Non eseguiti in questo ciclo.**
 
 **P4, P5 e P6:** sempre sospesi. **P7.3–P7.5:** non avviati.
+
+## 7. Quarto ciclo — comando `!aw ROUTE` non valido (18 novembre 2026)
+
+**Input di prova e output:** forniti dall'utente come testo di una distinta conversazione sperimentale. Comando riportato: `!aw ROUTE -- Progetta un servizio web`; risposta: errore esplicito di sintassi, verbo maiuscolo non riconosciuto per regola case-sensitive, nessun routing o task avviato. Il testo originale non è attestato autonomamente dal checkpoint Git (`request_refs: null`).
+
+**Verifica GitHub indipendente:**
+- Store `massimilianonardi-ai/ai-work-state`, branch `main`.
+- Commit del test `bf794bf5c7799dc292f31c4f609f6c7c0a490e7d`, parent `e901fb543c2aab756868b8afd4ad6447e81561b8`, albero `699feb0ef9fbaf2e482bcbc81d241ee35fecfe47`.
+- Identità sperimentale (non identità corrente): `2026-11-18_15-17_665dda75-fca5-42bb-bac9-318e115a9e3b`.
+- Il diff del commit contiene soltanto `conversations/<id>/branch-0.yaml` e `requests/<id>/0-000001.yaml`.
+- Branch: `message_id: 1`, `tasks: []`, `sync_gaps: []`, `synchronization: complete`.
+- Request: `source_checkpoint: 0`, nessun delta task, `checkpoint_integrity: complete`.
+- Il task storico P3 mantiene il blob SHA `25286a3b9f225a936593b367408763c9f4eaaa4a`; baseline `86fd092e8b3d8a77ad23f9d0a56a620e09a91123`.
+
+**Valutazione:** **P7.1/C10 PASS nel caso osservato** (output fornito + assenza di effetti Git diversi dal checkpoint), coerente con `routing/commands.md` (verbi case-sensitive; comandi invalidi producono errore senza routing). La verifica Git non attesta il contenuto esatto digitato né esclude autonomamente ogni possibile effetto esterno, che non emerge nella risposta riportata.
+
+**Stato P7.1:** C02 e C10 verificati nel nuovo ciclo; C04 e C05 riutilizzati come PASS storici circoscritti; restanti casi non completati. **P7.1 complessivo PARTIAL**.
+**Stato P7.2:** il caso di routing `design` è verificato nel precedente test valido; altri scenari non completati. **P7.2 complessivo PARTIAL**.
+P4, P5, P6 sospesi; P7.3–P7.5 non avviati.
