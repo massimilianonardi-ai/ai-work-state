@@ -306,3 +306,22 @@ P4, P5, P6 ancora sospesi. P7.3–P7.5 non avviati.
 **Osservazione progettuale:** la risposta `Rispondi con la parola OK.` era vincolata a un output brevissimo, perciò è possibile un conflitto di priorità/percorso di generazione che sopprima marker e finalizzazione; l'esperimento `Che cos'è il DNS?` riduce questa variabile. Non si modifica il bootstrap prima dei risultati.
 
 **Stato:** P7.1 e P7.2 `PARTIAL`; diagnosi del comportamento di finalizzazione avviata, confronto A/B **NOT RUN**; P4–P6 sospesi; nessuna modifica a task o file di regole.
+
+## 16. Esperimento A/B: prova Android del DNS — scrittura riuscita, conformità parziale (22 novembre 2026)
+
+**Dati provenienti dall'utente:** è stato identificato il client come **app Android**; il testo dell'output della conversazione nuova è una spiegazione di DNS con marker finale `ai-work-state: chat-id = 2026-11-22_14-16_056b77bd-b893-4db1-af73-db91e5e69b94; branch-id = 0; message-id = 1` e dichiarazione `persisted`. Il messaggio originale proposto è `Che cos'è il DNS?`. Questa identità è della chat sperimentale, non di quella che aggiorna il rapporto.
+
+**Evidenza GitHub alla verifica:** lo store `massimilianonardi-ai/ai-work-state/main` aveva HEAD `ef06e13da9ad28b9b66c501d06c500db85d53436`.
+- Commit iniziale `e83ab97e725a28c9c51b1afb84b1f790fe028492` (parent `d2755ccef350766afcd21194f8256c85d459f549`) crea due soli file della chat Android, stato e checkpoint numero 1; il commit è quindi la prova effettiva della scrittura della risposta DNS.
+- Commit successivo `ef06e13da9ad28b9b66c501d06c500db85d53436` (parent `e83ab97e725a28c9c51b1afb84b1f790fe028492`) aggiunge un checkpoint della stessa chat, relativo a feedback Android sulla visualizzazione della risposta e tempo trascorso: numero 2. Non confondere il marker riportato del primo messaggio con lo stato successivamente avanzato della chat sperimentale.
+- File attuale `conversations/2026-11-22_14-16_056b77bd-b893-4db1-af73-db91e5e69b94/branch-0.yaml`: `message_id: 2`, `tasks: []`, `sync_gaps: []`, ma **non** `synchronization: complete`.
+- I request checkpoint realmente presenti sono `requests/<chat-id>/branch-0-000001.yaml` e `requests/<chat-id>/branch-0-000002.yaml`, con `checkpoint_integrity: complete` e `request_refs: null`. Entrambi i percorsi canonici `requests/<chat-id>/0-000001.yaml` e `0-000002.yaml` sono assenti (404).
+- Task P3 storico invariato: `task-state.md` SHA `25286a3b9f225a936593b367408763c9f4eaaa4a`; `baseline-v001.md` SHA `86fd092e8b3d8a77ad23f9d0a56a620e09a91123`.
+
+**Valutazione prova Android:** **PASS** contenuto/marker e scrittura GitHub reale (due commit), **FAIL** conformità del percorso checkpoint e mancanza del campo `synchronization`. La dichiarazione `persisted` è fondata quanto all'esistenza dei file, ma non dimostra piena conformità al protocollo. Lo stesso genere di non conformità era stato osservato in C01.
+
+**Implicazione:** è falsa l'ipotesi che Android impedisca sempre la persistenza. Rimangono plausibili difetti intermittenti o differenze nell'applicazione delle istruzioni, nella modalità/modello, nella disponibilità del connettore e nella forma dei metadati. Il client non è memorizzato nei file Git: l'etichetta Android dipende dall'indicazione dell'utente.
+
+**Prossima osservazione necessaria:** prova browser con lo **stesso** messaggio `Che cos'è il DNS?` in una nuova conversazione del medesimo progetto; riportare output completo e marker, poi verificare commit e formato. Non modificare bootstrap o task prima del confronto.
+
+**Stato A/B:** Android osservato, **persistenza effettiva ma non conforme al 100%**; browser **NOT RUN / risultato non ancora fornito**. P7.1/P7.2 PARTIAL; P4/P5/P6 sospesi; P7.3–P7.5 non avviati.
