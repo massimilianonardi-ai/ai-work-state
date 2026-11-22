@@ -396,3 +396,13 @@ conversations/
 - La specifica e la finalizzazione attualmente installate restano **operative** fino a un'eventuale revisione esplicita completa; per questa risposta rimane l'obbligo del checkpoint per turno.
 
 **Stato:** chiarimento dei requisiti di struttura registrato, **nessun cambiamento attivo del bootstrap, del protocollo e dei task**. La creazione di una directory Git realmente vuota non è possibile senza file: la materializzazione delle due sottodirectory richiede un contenuto effettivo e la definizione del relativo schema, non file segnaposto arbitrari. P7.1 e P7.2 restano PARTIAL, P4–P6 sospesi.
+
+## 20. Decisione attuata: eliminazione di `requests/` dallo stato attivo (22 novembre 2026)
+
+**Autorizzazione esplicita dell'utente:** `requests va eliminato`. Resta invariato il comportamento dei file `conversations/<chat-id>/branch-N.yaml`, incluso il checkpoint di ramo per ogni risposta. Le sottodirectory `events/` (cambiamenti di stato effettivi) e `snapshots/` (fotografie del contesto necessario a riprendere il lavoro) risiedono sotto la directory della rispettiva chat.
+
+**Implementazione della nuova architettura:** il bootstrap e i documenti di protocollo vengono aggiornati per dismettere la scrittura del request record a ogni risposta. Il repository `ai-work-state/main` non contiene più la directory `requests/` nell'albero attivo; i file storici non sono distrutti, essendo recuperabili dalla cronologia Git. La presente transizione è un cambiamento significativo registrato come event e come snapshot del contesto nella chat corrente, non un nuovo checkpoint ridondante per ogni risposta.
+
+**Validazione:** verificare il branch finale, le directory `events/` e `snapshots/` in questa chat, l'assenza di `requests/` nel nuovo tree, la conservazione delle altre directory e dei task, e l'assenza di nuovi riferimenti operativi alla vecchia scrittura obbligatoria. Le sezioni storiche P7 anteriori a questa data documentano il comportamento **precedente** e non sono specifica attiva del nuovo schema. I nuovi test P7 dovranno verificare questa policy.
+
+**Nota:** la revisione del protocollo non comporta un cambiamento della numerazione, dell'identità, o dei campi di `branch-N.yaml`; le regole di recovery devono usare la storia verificata dei rami e gli eventi pertinenti, senza fabbricare turni mancanti.

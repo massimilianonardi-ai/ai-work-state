@@ -1,18 +1,17 @@
 # AI-Workflow state store — active branch `main`
 
-This repository holds mutable state for AI-Workflow. **All new authorized conversation checkpoints and task-state records must be written on `main`.** Do not write active persistence to `dev`, which contains older synthetic fixtures and is retained only as test history.
+This repository holds mutable state for AI-Workflow. All authorized live conversation and task-state updates go to `main`; `dev` contains historical test fixtures.
 
-## Branch contract
-
-- **`main` — active persistence destination.** Use `refs/heads/main` and its exact expected commit SHA for conditional Git writes. Verify the new `main` ref and changed records before claiming persistence.
-- **`dev` — historical test fixtures only.** Do not use it to store new live conversation/task records. There is no implicit synchronization from `dev` into `main`.
-- The rules and checkpoint schema come from `massimilianonardi-ai/ai-workflow`, current release `v0.2.3`. The state repository does not itself run agents or execute the finalization automatically.
-
-## Active paths (created as needed)
+## Active paths
 
 ```text
-conversations/<chat-id>/branch-N.yaml
-requests/<chat-id>/N-000001.yaml
+conversations/<chat-id>/
+  branch-0.yaml
+  branch-1.yaml
+  events/                   # created on demand for meaningful state changes
+    0-000026.yaml
+  snapshots/                # created when resume context is needed
+    0-000026.yaml
 tasks/<task-id>/
   baseline-v001.md
   task-state.md
@@ -20,10 +19,12 @@ tasks/<task-id>/
   handoff.md
 ```
 
-A response with no task changes still requires a conversation branch checkpoint **and** an immutable request record. Task files update only when the task genuinely changes. Do not create arbitrary historical records to fill `sync = pending` gaps. See [persistence policy](doc/persistence.md).
+The existing `branch-N.yaml` behavior is unchanged: it records the latest response checkpoint and effective task associations. Every assistant response attempts a conditional, verified update of its branch file, even if no task changes. Only meaningful state changes generate immutable files in `events/`; only genuine resume needs generate `snapshots/`. Empty Git directories are not created until they contain a real record.
+
+The standalone `requests/` directory is **retired** and absent from the active tree. Its former files remain recoverable through earlier Git commits; do not create new request records or automatically turn the old empty metadata records into new events.
+
+See [persistence policy](doc/persistence.md) and the rules in [ai-workflow](https://github.com/massimilianonardi-ai/ai-workflow).
 
 ## Public repository privacy warning
 
-**This repository is currently PUBLIC.** Any committed conversation ID, task association, event metadata or other stored content can be read publicly. Do **not** store private chat transcripts, secrets, personal data, access tokens or sensitive task details here. Before storing nonpublic user/workflow content, change this repository to private using the appropriate authorized GitHub settings; this commit does **not** change the repository's visibility.
-
-No live chat checkpoint is created merely by publishing this README.
+This repository is currently PUBLIC. Do not store private conversation transcripts, credentials, confidential task information or personal details. Use a suitably protected store before preserving nonpublic context.

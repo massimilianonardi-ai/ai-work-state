@@ -1,0 +1,6 @@
+branch_id: 0
+message_id: 26
+kind: state_schema_change
+decision: "Retire the standalone requests/ index; preserve conversations/<chat-id>/branch-N.yaml behavior; use events/ for state changes and snapshots/ for resume context under each chat."
+scope: ai-workflow-persistence
+status: adopted

@@ -1,0 +1,13 @@
+branch_id: 0
+message_id: 26
+focus: "AI-Workflow persistence structure revision"
+context:
+  - "Conversation branch-N.yaml semantics and per-response checkpoint remain unchanged."
+  - "Standalone requests/ records are discontinued; old records remain in Git history."
+  - "Conversation events/ stores actual state transitions, not ordinary replies."
+  - "Conversation snapshots/ stores concise context needed to resume work."
+  - "The state repository main branch remains the active destination."
+pending:
+  - "Validate continuation and fork recovery under the new active protocol."
+  - "Refine event/snapshot payload and timing only when actual use requires it."
+task_associations: []

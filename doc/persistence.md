@@ -1,17 +1,17 @@
 # Active persistence policy — `ai-work-state/main`
 
-**Current target:** `massimilianonardi-ai/ai-work-state`, Git branch **`main`**.
-**Historical fixture branch:** `dev`. It is not a destination for new live checkpoints.
+**Active destination:** `massimilianonardi-ai/ai-work-state`, branch `main`. The `dev` branch is historical, not a live write target.
 
-1. Recover an actual conversation identity from the current chat, never a quoted example from elsewhere.
-2. Check available **writable** GitHub connector permissions, not just reading access.
-3. For each assistant response, attempt to update `conversations/<chat-id>/branch-N.yaml` and add `requests/<chat-id>/N-<message-id-padded-to-6-digits>.yaml` on **main**, even with no changed task.
-4. Add task baseline/state/log/handoff changes only when they are real, authorized and relevant.
-5. Read the exact `refs/heads/main` head SHA `H` and current files; create a new tree based on `H`, a commit with parent `H`, and conditionally advance **main** with `expected_sha=H`, `force=false`. Do not silently fall back to `dev` when `main` cannot be written.
-6. Read back `main` and all changed file contents; only then report `persisted`. If older checkpoints are not recoverable, record gaps explicitly and use `persisted_with_gaps` with `sync = pending`.
-7. If the write fails, is unavailable, or is not attempted, report the correct outcome. Do not declare zero modifications a successful checkpoint.
-8. Keep previous synthetic files on `dev` unchanged and avoid copying them to active `main`.
+1. Recover the genuine conversation identity from the current chat, not quoted markers from other chats.
+2. Verify current writable GitHub permissions. A readable bootstrap is not a write capability.
+3. **For each assistant response**, update `conversations/<chat-id>/branch-N.yaml` with the new `message_id` and evidenced task associations. Preserve the established behavior of branch files, including fork, recovery, `sync_gaps` and markers.
+4. **Only when state materially changes**, create an immutable event inside `conversations/<chat-id>/events/`. Include the confirmed branch/checkpoint, change type and enough grounded detail to recover the transition. Do not write empty events for ordinary answers.
+5. **When context is needed to resume work**, save a concise snapshot inside `conversations/<chat-id>/snapshots/`, scoped to the actual branch/checkpoint. Do not assume the complete transcript is accessible or copy private content into this public repository. Events and snapshots are stored in each chat's directory and created on demand.
+6. Update task baseline, state, log, handoff, plans and derived indexes only for actual authorized changes. Include associated changed task files, event/snapshot if relevant and the branch checkpoint in the same Git tree/commit.
+7. Read the exact `refs/heads/main` commit SHA `H`, create a tree preserving all other current files, commit with parent `H`, and update `main` conditionally with `expected_sha=H`, `force=false`. Reevaluate on concurrent changes, never silently overwrite.
+8. Read back `main` and every changed file. Report `persisted` only for a verified checkpoint with no unresolved gaps. Otherwise distinguish `persisted_with_gaps`, `write_failed`, `storage_unavailable`, or `write_not_attempted` and retain `sync = pending` as appropriate.
+9. **No `requests/` directory or per-response request record.** Existing historic request records were retired from `main` and are recoverable from Git history before the migration. Do not reconstruct missing content or task associations by guessing.
 
-**Visibility:** the repository is currently **public**. Do not write confidential messages, task data, personal information, secrets or other sensitive metadata. A private repository is required before such data is used for persistence. The framework's current versioned guidance resides in `ai-workflow/state/protocol.md` and `ai-workflow/state/connector-runbook.md`.
+**Privacy:** this repository remains public. Do not store confidential conversation content or sensitive metadata without an appropriate private destination.
 
-**Host boundary:** publishing this policy does not enable a native ChatGPT write hook; the connected assistant needs to invoke authorized GitHub actions in its own conversation.
+**Operational rules:** `ai-workflow/bootstrap.md`, `state/protocol.md`, `doc/conversation-identity.md`, and `state/connector-runbook.md`.
