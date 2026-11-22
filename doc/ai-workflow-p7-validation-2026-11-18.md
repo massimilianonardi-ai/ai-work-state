@@ -359,3 +359,21 @@ P4, P5, P6 ancora sospesi. P7.3–P7.5 non avviati.
 **Priorità successiva:** valutare e testare separatamente due invarianti, mantenendo identico il client: (1) finalizzazione universale per input ordinario minimo; (2) formato canonico di tutti i checkpoint scritti. Confrontare l'effettivo bootstrap letto e i campi scritti in ciascuna prova, senza presumere che la semplice etichetta `persisted` basti. Nessuna modifica a `ai-workflow/bootstrap.md` né al task/alla baseline autorizzata in questo turno.
 
 **Stato:** confronto A/B DNS **completato**, entrambi i client PASS per scrittura effettiva e FAIL per conformità dei metadati; P7.1/P7.2 ancora `PARTIAL`; P4/P5/P6 sospesi, P7.3–P7.5 non avviati.
+
+## 18. Rettifica del giudizio sui checkpoint e riepilogo del contratto `requests/` (22 novembre 2026)
+
+**Motivo:** a seguito della domanda dell'utente su tutte le decisioni prese riguardo `requests/`, è stato riesaminato il testo operativo di `ai-workflow/bootstrap.md`, `state/protocol.md`, `state/connector-runbook.md`, `doc/conversation-identity.md` e `ai-work-state/doc/persistence.md`, oltre alle validazioni P1–P3.
+
+**Contratto deciso e attivo:**
+- `requests/` è l'indice dei checkpoint delle **risposte**, non una copia integrale dei messaggi utente. Ogni risposta, anche con nessun task cambiato, comporta un record immutabile di request e l'avanzamento del ramo in `conversations/`.
+- Percorso canonico `requests/<chat-id>/<branch-id>-<message-id-su-6-cifre>.yaml`. Esempio per primo messaggio del ramo 0: `requests/<chat-id>/0-000001.yaml`. Il nome `branch-0-000001.yaml` dei test del 22 novembre è davvero **non conforme alla convenzione**.
+- Record minimo: `source_checkpoint`, `request_refs` (oppure `null` se i riferimenti effettivi al prompt non esistono), `tasks_added`, `tasks_removed`, `event_refs`, `checkpoint_integrity`. `request_refs: null` non dimostra il contenuto del prompt originario.
+- Scrivere i due file amministrativi ed eventuali veri aggiornamenti task in un unico commit condizionale su `ai-work-state/main`, rileggere ref/file prima di dichiarare `persisted`; nessuna modifica a `dev`. Il repository è pubblico: niente transcript privati, segreti o informazioni sensibili.
+- `source_checkpoint` identifica il punto di origine della risposta: per il primo messaggio `0`; il file si riferisce al `message-id` dell'output. In caso di ramo derivato, la numerazione continua dal checkpoint di origine.
+- Lo storico serve anche per ricostruire associazioni ai task a un fork; mai inventare checkpoint storici perduti. Se vi sono lacune non recuperate, dichiarare `sync_gaps`, `synchronization: incomplete`, `persisted_with_gaps` e mantenere `sync = pending`.
+
+**Rettifica di un errore di analisi già riportato nelle sezioni 11, 13, 16 e 17:** l'assenza del campo `synchronization: complete` nei file di stato dei test non costituisce **di per sé** una violazione dimostrata dalle norme operative. La specifica stabilisce espressamente `synchronization: incomplete` quando esistono gap, ma non prescrive in modo altrettanto esplicito la presenza materiale del campo `synchronization: complete` quando lo storico non ha gap. Conseguentemente, la classificazione `FAIL` per *quel solo campo mancante* è **ritirata**. Non interpretare `sync_gaps: []` come equivalente a una verifica indipendente della completezza, ma nemmeno il campo positivo assente come errore certo.
+
+**Valutazione rettificata dell'A/B DNS:** sia Android sia browser hanno davvero persistito i checkpoint su GitHub; in entrambi si osserva una **non conformità del solo percorso del request record** rispetto alla regola di naming. Non sono documentati altri difetti certi del contenuto minimo dei due record. Il comportamento intermittente `write_not_attempted` di C15 e la risposta `OK` priva di marker restano test distinti da diagnosticare.
+
+**Stato:** P7.1/P7.2 PARTIAL; P4/P5/P6 sospesi; nessun task o bootstrap modificato. Questa sezione rettifica esplicitamente i punti precedenti, che vanno letti alla luce della presente correzione.
