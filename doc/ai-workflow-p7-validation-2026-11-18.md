@@ -272,3 +272,19 @@ P4, P5, P6 ancora sospesi. P7.3–P7.5 non avviati.
 **Stato P7.1 complessivo:** `PARTIAL`, con due problematiche di persistenza documentate (C01: percorso errato + campo sincronizzazione assente; C15: nessun tentativo di scrittura). P7.2 `PARTIAL`; P4–P6 sospesi; P7.3–P7.5 non avviati.
 
 **Prossimo criterio:** valutare come garantire che la finalizzazione non dipenda dal riconoscimento del prefisso `!aw`, senza cambiare ora il bootstrap. Restano C11 e C16 da sottoporre a messaggi reali; un nuovo test ripetuto del medesimo prefisso ha valore inferiore rispetto all'indagine del mancato checkpoint.
+
+## 14. Undicesimo ciclo — controllo di finalizzazione per una richiesta ordinaria (22 novembre 2026)
+
+**Scenario proposto:** aprire una conversazione nuova nel progetto e inviare soltanto `Rispondi con la parola OK.`, senza indicazioni su GitHub, checkpoint o persistenza. Il risultato atteso era risposta `OK` **e** checkpoint obbligatorio con marker genuino della nuova conversazione.
+
+**Evidenza dell'output:** l'utente ha riportato prima `OK` e ha chiarito espressamente al turno successivo che `OK` era **l'intera risposta della conversazione sperimentale**, non una conferma o un nuovo comando inviato in questa chat. La risposta non includeva un marker `ai-work-state`, né resoconto di checkpoint.
+
+**Evidenza Git:** nel controllo dello store `massimilianonardi-ai/ai-work-state/main` effettuato dopo la ricezione del risultato `OK` e prima del salvataggio del checkpoint `0/17` di questa chat, il HEAD era ancora `0f74d2d645d820a000d0066ccd1161fadace6245`, ossia il commit già registrato dopo aver proposto il test. Il successivo commit `963111df72d1e9e2cc566c451653c532264e796d` registra **solo il checkpoint 0/17 della presente chat**, non una conversazione sperimentale. Anche il successivo controllo su `main` rileva quest'ultimo come HEAD. **Non risulta alcun commit autonomo della conversazione di test** nel periodo osservato.
+
+**Limite:** poiché l'output sperimentale è esclusivamente `OK`, non dispone di un `chat-id`/marker verificabile; non è quindi possibile cercare esattamente il file del suo checkpoint per percorso. L'assenza di nuovi commit nella finestra rilevante, sul branch `main` configurato, costituisce però evidenza più ampia che non sia stata effettuata la prevista persistenza in quello store.
+
+**Esito:** **PASS** per il contenuto minimale richiesto; **FAIL** per la finalizzazione universale nella prova osservata (marker assente e nessuna scrittura Git visibile). Il risultato rafforza l'ipotesi che la mancata finalizzazione non dipenda specificamente dal prefisso `!awx` visto nel caso C15: è stata osservata anche con una richiesta ordinaria non legata alla grammatica AI-Workflow. Non è ancora provata l'universalità del difetto né la sua causa tecnica.
+
+**Priorità:** aprire una diagnosi circoscritta del percorso di finalizzazione, verificando l'effettiva applicazione del bootstrap, la disponibilità del connettore GitHub e le condizioni che portano a interrompere il checkpoint in richieste minimali. Nessun cambiamento al bootstrap né recupero di conversazioni sperimentali è stato autorizzato in questo ciclo. P4/P5/P6 rimangono sospesi. P7.1/P7.2 restano PARTIAL.
+
+**Nota sulla fonte:** l'appartenenza della risposta `OK` alla nuova chat è una dichiarazione esplicita dell'utente; non va reinterpretata come esito generato in questa chat. 
