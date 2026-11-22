@@ -288,3 +288,21 @@ P4, P5, P6 ancora sospesi. P7.3–P7.5 non avviati.
 **Priorità:** aprire una diagnosi circoscritta del percorso di finalizzazione, verificando l'effettiva applicazione del bootstrap, la disponibilità del connettore GitHub e le condizioni che portano a interrompere il checkpoint in richieste minimali. Nessun cambiamento al bootstrap né recupero di conversazioni sperimentali è stato autorizzato in questo ciclo. P4/P5/P6 rimangono sospesi. P7.1/P7.2 restano PARTIAL.
 
 **Nota sulla fonte:** l'appartenenza della risposta `OK` alla nuova chat è una dichiarazione esplicita dell'utente; non va reinterpretata come esito generato in questa chat. 
+
+## 15. Ipotesi di differenza tra app Android e browser — disegno A/B (22 novembre 2026)
+
+**Nuovo dato fornito dall'utente:** tutti i recenti test di P7 citati sono stati eseguiti nell'app smartphone; in precedenza il browser web aveva gestito correttamente la persistenza. Il client di ciascun test non è comunque registrato in `branch-0.yaml` o nei checkpoint: l'attribuzione del client deriva dall'utente, non dai commit Git.
+
+**Ipotesi:** la superficie di utilizzo (app Android versus browser web) è una variabile potenzialmente correlata a inizializzazione del bootstrap, strumenti GitHub disponibili, permessi/connettori o comportamento della finalizzazione. Non è stabilita alcuna causalità. Anche nel periodo Android sono state osservate persistenze conformi, quindi la spiegazione «mobile non supporta GitHub» è incompatibile con le evidenze disponibili come regola universale.
+
+**Test A/B proposto — non ancora eseguito:**
+- Test A: nuova chat nel progetto AI-Workflow, browser web, stessa utenza, stesso modello/modalità e stesso messaggio.
+- Test B: nuova chat nel progetto AI-Workflow, app Android, stessa utenza, stesso modello/modalità e stesso messaggio.
+- Prompt identico, senza istruzioni che impongano risposta esclusivamente minimale: `Che cos'è il DNS?`.
+- Eseguire le due prove in prossimità temporale, mantenere quanto possibile identiche impostazioni e connessione a GitHub; registrare il client manualmente.
+- Leggere entrambi gli output e marker. Verificare nel repository `ai-work-state/main` l'effettiva scrittura e rilettura del file `conversations/<chat-id>/branch-0.yaml` e del file canonico `requests/<chat-id>/0-000001.yaml` (per una chat inizializzata a `branch-0`), il campo `synchronization: complete`, `tasks: []`, e il commit Git per ciascuna prova.
+- Un esito browser PASS/app FAIL costituisce evidenza di correlazione da ripetere, non causalità certa. Entrambi FAIL suggeriscono condizione condivisa; entrambi PASS suggeriscono difetto intermittente o differenza nel tipo di richiesta. Se l'esito è ambiguo, ripetere in ordine invertito e variare **una sola** dimensione per volta.
+
+**Osservazione progettuale:** la risposta `Rispondi con la parola OK.` era vincolata a un output brevissimo, perciò è possibile un conflitto di priorità/percorso di generazione che sopprima marker e finalizzazione; l'esperimento `Che cos'è il DNS?` riduce questa variabile. Non si modifica il bootstrap prima dei risultati.
+
+**Stato:** P7.1 e P7.2 `PARTIAL`; diagnosi del comportamento di finalizzazione avviata, confronto A/B **NOT RUN**; P4–P6 sospesi; nessuna modifica a task o file di regole.
