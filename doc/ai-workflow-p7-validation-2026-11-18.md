@@ -325,3 +325,37 @@ P4, P5, P6 ancora sospesi. P7.3–P7.5 non avviati.
 **Prossima osservazione necessaria:** prova browser con lo **stesso** messaggio `Che cos'è il DNS?` in una nuova conversazione del medesimo progetto; riportare output completo e marker, poi verificare commit e formato. Non modificare bootstrap o task prima del confronto.
 
 **Stato A/B:** Android osservato, **persistenza effettiva ma non conforme al 100%**; browser **NOT RUN / risultato non ancora fornito**. P7.1/P7.2 PARTIAL; P4/P5/P6 sospesi; P7.3–P7.5 non avviati.
+
+## 17. Confronto A/B completato — prova browser DNS e comparazione con Android (22 novembre 2026)
+
+**Prove, client identificato dall'utente:** due nuove chat nel progetto AI-Workflow, messaggio `Che cos'è il DNS?` inviato rispettivamente da app Android e browser web. Entrambe le risposte spiegano il DNS e terminano con dichiarazione `persisted` e un marker AI-Workflow genuino. I metadati Git non riportano direttamente il client: la piattaforma di ciascuna prova deriva da quanto fornito dall'utente.
+
+**Android (già documentato nella sezione 16):**
+- Chat `2026-11-22_14-16_056b77bd-b893-4db1-af73-db91e5e69b94`, commit iniziale `e83ab97e725a28c9c51b1afb84b1f790fe028492`.
+- Il checkpoint del primo messaggio esiste a `requests/<chat-id>/branch-0-000001.yaml`, ma il percorso canonico `requests/<chat-id>/0-000001.yaml` manca.
+- Il file di stato contiene `tasks: []`, `sync_gaps: []`, ma manca il campo `synchronization: complete`.
+- Un secondo commit della stessa chat (`ef06e13da9ad28b9b66c501d06c500db85d53436`) porta il checkpoint a `message_id: 2`, senza correggere i problemi di convenzione.
+
+**Browser web (nuovo risultato):**
+- Chat `2026-11-22_14-18_5f58f0a0-49f2-4709-adde-5f4acbbc0b49`, marker riportato `branch-id = 0; message-id = 1`.
+- Commit `5945bdaaef67f60767709c353a466fb0769d4647` (parent `ef06e13da9ad28b9b66c501d06c500db85d53436`, tree `d3f9de867fb0fac3d4e1124cba0b66076540125d`), messaggio `checkpoint: DNS explanation (2026-11-22_14-18)`.
+- Diff rispetto al parent: soltanto `conversations/2026-11-22_14-18_5f58f0a0-49f2-4709-adde-5f4acbbc0b49/branch-0.yaml` e `requests/2026-11-22_14-18_5f58f0a0-49f2-4709-adde-5f4acbbc0b49/branch-0-000001.yaml`, entrambi aggiunti.
+- Lo stato della chat web include `message_id: 1`, `tasks: []`, `sync_gaps: []`, ma **non** `synchronization: complete`.
+- Il request checkpoint realmente salvato include `source_checkpoint: 0`, `request_refs: null`, delte task vuote e `checkpoint_integrity: complete`; il percorso canonico `requests/<chat-id>/0-000001.yaml` è assente (`404`).
+- Il test browser non ha modificato task; SHA storico del task P3 `25286a3b9f225a936593b367408763c9f4eaaa4a`, baseline `86fd092e8b3d8a77ad23f9d0a56a620e09a91123`, ancora invariati alla verifica.
+
+**Tabella comparativa della prova controllata:**
+
+| Controllo | Android | Browser |
+|---|---|---|
+| Risposta DNS + marker | PASS | PASS |
+| Effettiva scrittura nel repository | PASS | PASS |
+| Percorso request checkpoint canonico | FAIL | FAIL |
+| Campo `synchronization: complete` | FAIL | FAIL |
+| Nessuna mutazione task nel commit di prova | PASS | PASS |
+
+**Conclusione circoscritta:** nei due casi `Che cos'è il DNS?` l'app Android e il browser hanno lo stesso comportamento di persistenza: **scrittura Git riuscita ma checkpoint non pienamente conforme al bootstrap**. Non è sostenuta l'ipotesi di un problema **esclusivo** dell'app Android. Non è invece ancora stata isolata la causa del difetto intermittente `write_not_attempted` visto con C15 e della risposta solo `OK` senza marker; restano variabili potenziali la brevità del prompt, il percorso di interpretazione e la disponibilità o impiego degli strumenti.
+
+**Priorità successiva:** valutare e testare separatamente due invarianti, mantenendo identico il client: (1) finalizzazione universale per input ordinario minimo; (2) formato canonico di tutti i checkpoint scritti. Confrontare l'effettivo bootstrap letto e i campi scritti in ciascuna prova, senza presumere che la semplice etichetta `persisted` basti. Nessuna modifica a `ai-workflow/bootstrap.md` né al task/alla baseline autorizzata in questo turno.
+
+**Stato:** confronto A/B DNS **completato**, entrambi i client PASS per scrittura effettiva e FAIL per conformità dei metadati; P7.1/P7.2 ancora `PARTIAL`; P4/P5/P6 sospesi, P7.3–P7.5 non avviati.
