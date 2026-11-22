@@ -253,3 +253,22 @@ P4, P5, P6 ancora sospesi. P7.3–P7.5 non avviati.
 **Esiti:** C15/C11/C16 **NOT RUN**; P7.1 resta **PARTIAL**, con precedente FAIL di conformità della finalizzazione C01 tuttora aperto. P7.2 resta **PARTIAL**. Nessun task nuovo, nessun cambiamento al workflow, nessuna modifica alla conversazione di prova C01. P4–P6 rimangono sospesi.
 
 **Prossimo input sperimentale (nuova conversazione):** `!awx help`. Confrontare risposta riportata con checkpoint GitHub; non trattare il marker della conversazione di prova come identità di questa.
+
+## 13. Decimo ciclo — caso reale C15 `!awx help` (22 novembre 2026)
+
+**Input/output di una diversa conversazione:** l'utente ha fornito il risultato del testo `!awx help`. L'assistente di prova risponde che il prefisso `!awx` non è il namespace `!aw`, lo tratta come richiesta ordinaria e indica `!aw help` come comando corretto. Questo è conforme al contratto di `routing/commands.md`, che ammette `!aw` solo al carattere zero seguito da spazio ASCII o fine testo.
+
+**Identità di prova, NON appartenente a questa conversazione:** `2026-11-22_10-50_05bd22bc-af53-465e-84c6-19177c2ac52b`, `branch-0`, `message-id: 1; sync = pending`.
+
+**Difetto della finalizzazione:** la risposta sperimentale dichiara `write_not_attempted`; non riferisce una proibizione host/utente di scrittura. Alla verifica del repository `massimilianonardi-ai/ai-work-state`, `main` = `02adb1d762f4b35119404d4643be94c1a98048d4`, questi file non esistono (`404`):
+- `conversations/2026-11-22_10-50_05bd22bc-af53-465e-84c6-19177c2ac52b/branch-0.yaml`;
+- `requests/2026-11-22_10-50_05bd22bc-af53-465e-84c6-19177c2ac52b/0-000001.yaml`;
+- percorso alternativo `requests/2026-11-22_10-50_05bd22bc-af53-465e-84c6-19177c2ac52b/branch-0-000001.yaml`.
+
+**Contratto violato se la scrittura era autorizzata e disponibile:** il bootstrap impone di tentare e verificare un checkpoint in ogni risposta, anche quando non viene riconosciuto alcun comando. Non è stata dimostrata l'eventuale indisponibilità specifica degli strumenti della conversazione sperimentale; ciononostante l'output `write_not_attempted` esplicita la mancanza del tentativo. L'assenza del file sul repository principale conferma che la sincronizzazione della prova è tuttora pendente alla verifica.
+
+**Esito C15:** **PASS funzionale del riconoscimento del namespace**, **FAIL della persistenza**. Non confondere un errore di finalizzazione con l'esecuzione sbagliata del comando. Non eseguire interventi correttivi sullo store della conversazione di prova senza una decisione appropriata; P5 resta sospesa.
+
+**Stato P7.1 complessivo:** `PARTIAL`, con due problematiche di persistenza documentate (C01: percorso errato + campo sincronizzazione assente; C15: nessun tentativo di scrittura). P7.2 `PARTIAL`; P4–P6 sospesi; P7.3–P7.5 non avviati.
+
+**Prossimo criterio:** valutare come garantire che la finalizzazione non dipenda dal riconoscimento del prefisso `!aw`, senza cambiare ora il bootstrap. Restano C11 e C16 da sottoporre a messaggi reali; un nuovo test ripetuto del medesimo prefisso ha valore inferiore rispetto all'indagine del mancato checkpoint.
