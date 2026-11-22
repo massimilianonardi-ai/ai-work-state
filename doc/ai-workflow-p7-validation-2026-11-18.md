@@ -207,3 +207,28 @@ L'output riportato riconosce il comando come valido, usa `design` come intento p
 **Prossimo caso proposto:** C01, `!aw help`, con output informativo soltanto e checkpoint amministrativo. In alternativa, un caso limite di riconoscimento namespace (C11/C15) per verificare che testo inizialmente non corrispondente a `!aw ` non venga interpretato come comando.
 
 P4, P5, P6 ancora sospesi. P7.3–P7.5 non avviati.
+
+## 11. Ottavo ciclo — `!aw help`, rilevata non conformità del checkpoint (22 novembre 2026)
+
+**Caso P7.1/C01:** l'utente ha riportato la risposta di una nuova conversazione con il comando `!aw help`. L'output elenca i verbi `help`, `route`, `audit`, `sync`, `resume`, `design`, `reflect`, `develop`, oltre a esempi e regole sintattiche coerenti con `routing/commands.md` (`main`, blob `667ded10bc798efafae9082fda02a629f90b193c`). Non descrive né avvia azioni bersaglio.
+
+**Conversazione di prova (NON identità della conversazione corrente):** `2026-11-22_10-44_b39b4e91-d8c0-4e2b-96c8-6d1221a9901e`, `branch-0`, `message_id: 1`.
+**Commit dello store verificato:** `f9140c5d77e09fa94eb3ec85a2b76a0efa7abb8c`, parent `66932da116aba26079c10857a99c77ff5327f570`, tree `a9aac337120f391b33cbebfdf1b5e43e83abf42e`. Diff rispetto al parent: due soli file amministrativi aggiunti; nessun task modificato. Task P3 blob `25286a3b9f225a936593b367408763c9f4eaaa4a`, baseline blob `86fd092e8b3d8a77ad23f9d0a56a620e09a91123` invariati.
+
+### Riscontri positivi
+
+- `conversations/<chat-id>/branch-0.yaml` esiste ed è stato riletto; include `message_id: 1`, `created_at`, `tasks: []`, `sync_gaps: []`.
+- Esiste anche un request record con `source_checkpoint: 0`, delta task vuoti e `checkpoint_integrity: complete`.
+- L'output di aiuto corrisponde sostanzialmente alla specifica dei comandi; nessun effetto bersaglio risulta dal diff di GitHub.
+
+### Due difetti accertati della finalizzazione
+
+1. **Percorso del request checkpoint non conforme.** Il protocollo installato prevede `requests/<chat-id>/0-000001.yaml`; invece il commit ha creato `requests/<chat-id>/branch-0-000001.yaml`. Il percorso canonico `0-000001.yaml` non esisteva al momento della verifica (`404`). Questo può impedire il recupero mediante percorso standard, anche se il blob è persistito.
+2. **Stato di sincronizzazione non esplicito.** Il record di conversazione non contiene `synchronization: complete`; è quindi non verificata la dichiarazione di completa sincronizzazione presente nell'output. `sync_gaps: []` non sostituisce il campo obbligatorio.
+
+**Esito P7.1/C01:** **PASS funzionale per l'output riportato; FAIL conformità della persistenza**. Non attribuire `persisted` conforme al protocollo al solo fatto che i due blob esistono. La verifica GitHub non attesta indipendentemente le parole originarie del messaggio utente.
+
+**Trattamento:** difetti documentati; non sono stati riparati i file della conversazione sperimentale e non si riapre P5, che è sospesa su decisione utente. È opportuno un controllo specifico sul comportamento della finalizzazione in una futura richiesta autorizzata. Evitare di dichiarare P7.1 interamente PASS prima della verifica dei casi restanti e della risoluzione/valutazione del difetto.
+
+**Progresso P7.1:** C01 PASS funzionale con difetti di checkpoint; C02, C09, C10, C13, C14 PASS nei casi osservati; C04/C05 PASS storici circoscritti. **P7.1 complessivo PARTIAL, un FAIL di conformità registrato.**
+**P7.2:** invariato, PARTIAL. **P4/P5/P6:** sospesi. **P7.3–P7.5:** non avviati.
