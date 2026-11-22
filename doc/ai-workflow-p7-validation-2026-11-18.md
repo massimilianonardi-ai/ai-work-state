@@ -232,3 +232,24 @@ P4, P5, P6 ancora sospesi. P7.3–P7.5 non avviati.
 
 **Progresso P7.1:** C01 PASS funzionale con difetti di checkpoint; C02, C09, C10, C13, C14 PASS nei casi osservati; C04/C05 PASS storici circoscritti. **P7.1 complessivo PARTIAL, un FAIL di conformità registrato.**
 **P7.2:** invariato, PARTIAL. **P4/P5/P6:** sospesi. **P7.3–P7.5:** non avviati.
+
+## 12. Nono ciclo — riconoscimento esatto del namespace (22 novembre 2026)
+
+**Autorizzazione corrente:** `Procedi` è una continuazione della fase P7.1/P7.2; non un comando `!aw` e non autorizza altri workflow o P4–P6. Il bootstrap e `routing/commands.md` sono stati nuovamente letti.
+
+### Casi preparati, non ancora eseguiti con un messaggio sperimentale genuino
+
+| ID | Input esatto | Atteso dal protocollo |
+|---|---|---|
+| C01 (controllo già osservato) | `!aw help` | Guida comandi; esito funzionale PASS, ma difetto di checkpoint già documentato |
+| C15 | `!awx help` | Namespace non riconosciuto; non lanciare `help` come comando AI-Workflow |
+| C11 | ` !aw help` | Non riconoscere come comando perché `!aw` non è al carattere zero |
+| C16 | `!aw<TAB> help` (TAB reale dopo `!aw`) | Non riconoscere: sono ammessi spazio ASCII o fine testo dopo `!aw` |
+
+**Risultato documentale:** la regola discriminante è esplicita nel documento di comando, blob `667ded10bc798efafae9082fda02a629f90b193c`. La prova preferita è C15, perché non dipende da spazi iniziali che una UI potrebbe sopprimere. La risposta a `!awx help` può essere una spiegazione del testo o un avviso sul prefisso sbagliato, **ma non deve eseguire il verbo `help` attraverso il dispatcher `!aw`**. Il normale checkpoint di conversazione è comunque richiesto dal bootstrap.
+
+**Evidenza realmente osservata in questo ciclo:** l'input genuino dell'utente è `Procedi` (con spazi finali), interpretato come autorizzazione alla continuazione dei controlli. Questo dimostra una continuazione contestuale, **non** l'esito C15/C11/C16.
+
+**Esiti:** C15/C11/C16 **NOT RUN**; P7.1 resta **PARTIAL**, con precedente FAIL di conformità della finalizzazione C01 tuttora aperto. P7.2 resta **PARTIAL**. Nessun task nuovo, nessun cambiamento al workflow, nessuna modifica alla conversazione di prova C01. P4–P6 rimangono sospesi.
+
+**Prossimo input sperimentale (nuova conversazione):** `!awx help`. Confrontare risposta riportata con checkpoint GitHub; non trattare il marker della conversazione di prova come identità di questa.
