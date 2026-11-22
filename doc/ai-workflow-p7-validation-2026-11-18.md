@@ -377,3 +377,22 @@ P4, P5, P6 ancora sospesi. P7.3–P7.5 non avviati.
 **Valutazione rettificata dell'A/B DNS:** sia Android sia browser hanno davvero persistito i checkpoint su GitHub; in entrambi si osserva una **non conformità del solo percorso del request record** rispetto alla regola di naming. Non sono documentati altri difetti certi del contenuto minimo dei due record. Il comportamento intermittente `write_not_attempted` di C15 e la risposta `OK` priva di marker restano test distinti da diagnosticare.
 
 **Stato:** P7.1/P7.2 PARTIAL; P4/P5/P6 sospesi; nessun task o bootstrap modificato. Questa sezione rettifica esplicitamente i punti precedenti, che vanno letti alla luce della presente correzione.
+
+## 19. Chiarimento architetturale richiesto dall'utente — conversazioni con `events/` e `snapshots/` (22 novembre 2026)
+
+**Indicazione esplicita:** il comportamento di `conversations/` **deve rimanere come prima**. Non modificare la semantica dei file `conversations/<chat-id>/branch-N.yaml`, la numerazione e il modello dei rami. Aggiungere nella directory **di ciascuna conversazione** due sottodirectory concettuali:
+```text
+conversations/
+  <chat-id>/
+    branch-0.yaml
+    branch-1.yaml
+    events/
+    snapshots/
+```
+- `events/`: registrazioni dei **cambiamenti di stato**, non di ogni risposta ordinaria.
+- `snapshots/`: **fotografie del contesto necessario a riprendere il lavoro**.
+- Queste due categorie sono collocate sotto la rispettiva chat, non in directory parallele globali.
+- La decisione su `requests/` e su **quali dati salvare e quando** va riesaminata separatamente: non supporre che un record quasi vuoto per risposta equivalga all'archivio del testo delle chat; non cancellare né migrare storici prima di una decisione e di un piano di compatibilità.
+- La specifica e la finalizzazione attualmente installate restano **operative** fino a un'eventuale revisione esplicita completa; per questa risposta rimane l'obbligo del checkpoint per turno.
+
+**Stato:** chiarimento dei requisiti di struttura registrato, **nessun cambiamento attivo del bootstrap, del protocollo e dei task**. La creazione di una directory Git realmente vuota non è possibile senza file: la materializzazione delle due sottodirectory richiede un contenuto effettivo e la definizione del relativo schema, non file segnaposto arbitrari. P7.1 e P7.2 restano PARTIAL, P4–P6 sospesi.
