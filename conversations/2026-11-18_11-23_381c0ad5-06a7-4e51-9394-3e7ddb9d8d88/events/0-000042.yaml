@@ -1,0 +1,10 @@
+branch_id: 0
+message_id: 42
+kind: task_scope_diagnostic_and_documentation_correction
+subject: ai-workflow
+finding: "Irrelevant mention of m-rsudo in prior assistant summary and activation report; context carryover from earlier test projects, not a misrouted task."
+verification: "Rules routing maps design and develop correctly; all 51 framework files checked, product references only in regression examples; no m-rsudo repository mutation by workflow activation."
+corrected_document: "doc/ai-workflow-progressive-activation-2026-11-23.md"
+historical_snapshot_preserved: true
+rules_changed: false
+task_changes: []

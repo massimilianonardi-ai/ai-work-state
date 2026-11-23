@@ -19,7 +19,7 @@
 
 - Rules HEAD/tree verified after publication. All **51 framework files** were checked for relative Markdown links: **zero broken internal links**.
 - Structural assertions passed for bootstrap invariants, routing, phase/level contracts, templates, milestone schema, supervision and unchanged checkpoint paths.
-- No changes to m-rsudo, per-response checkpoint policy, P4–P6 suspension or unrelated task state.
+- No change to the per-response checkpoint policy, the suspension of P4–P6, or existing task records; activation affects the AI-Workflow framework.
 - **Pending:** live evidence of assistant compliance in new design/develop tasks and pinned cross-chat reviews. Static success is not agent behavior or product runtime success.
 
 [Full validation matrix](https://github.com/massimilianonardi-ai/ai-workflow/blob/main/doc/progressive-workflow-validation.md).
