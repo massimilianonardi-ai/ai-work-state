@@ -1,0 +1,7 @@
+event_id: 0014
+at: "2026-11-23T11:23:36+01:00"
+kind: specification_constraint_revision
+summary: "User explicitly rejects a6 and all additional products/installations for reimplementation of rsudo apisix; requests a comparison of APISIX deployment modes and administration models before further design. Verified Apache APISIX documentation and delivered comparison for traditional, decoupled, standalone file-driven and standalone API-driven. No product code changes made."
+source: explicit_current_user_message
+prohibited_additions: "a6 or other products requiring new installation"
+new_code_authorized_this_turn: false
