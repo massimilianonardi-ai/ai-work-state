@@ -1,0 +1,11 @@
+date: "2026-11-23"
+source_checkpoint: 3
+checkpoint: 4
+kind: source_investigation_completed
+phase: specification
+subject: "rsudo/rsudo-admin/modules deep-dive and rsudo-deploy positioning"
+reference:
+  repository: "massimilianonardi-ai/m-rsudo"
+  commit: "fad7b8b49ea9b966e56013f1a66736587633ba65"
+outcome: "source evidence collected; independent m-rsudo-deploy package proposed; no product code changed"
+approval: pending
