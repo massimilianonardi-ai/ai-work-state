@@ -1,0 +1,14 @@
+at_utc: "2026-11-23T14:59:45.723Z"
+kind: architecture_alternative_evaluated
+source_checkpoint: 5
+checkpoint: 6
+phase: specification
+user_proposal:
+  repository: "massimilianonardi-ai/m-rsudo"
+  cli: "rsudo deploy <operation>"
+  menu: "Deployment menu integrated in rsudo-admin"
+recommendation: "prefer user's integrated same-repository proposal over separate m-rsudo-deploy package"
+evidence: "m-rsudo dispatcher already resolves m-rsudo-owned rsudo-mod-deploy.lib.sh; rsudo-admin menu is static and credential state is shared in shell"
+remaining_concern: "local offline rsudo deploy commands currently require credential parsing before module dispatch; resolve selectively without breaking rsudo"
+implementation_status: not_started
+approval_status: proposed_pending_user_decision
