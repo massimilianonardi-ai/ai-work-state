@@ -1,0 +1,10 @@
+event_id: 0016
+at: "2026-11-23T11:51:56+01:00"
+kind: product_implementation_verified_by_ci
+phase: develop
+summary: "Operator said procedi following Traditional-only APISIX reimplementation/legacy preservation specification. New independent main rsudo-mod-apisix.lib.sh and manual published; legacy module remains byte-for-byte unchanged, and all 35 public legacy function names remain available in new source. CI mock tests and package pass Ubuntu/macOS; live SSH/sudo APISIX Traditional acceptance not attempted."
+product_commit: 46bdf6c88dc58ef424ff7416f9796733f26c982c
+product_initial_commit: 73b90295a75edff7a155f167da93ad13a94a9ed1
+ci_run: https://github.com/massimilianonardi-ai/m-rsudo/actions/runs/45159763532
+ci_conclusion: success
+runtime_accepted: false
