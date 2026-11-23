@@ -1,0 +1,7 @@
+event_id: 0019
+at: "2026-11-23T12:32:20+01:00"
+kind: product_module_created
+summary: "On explicit user request, created a deliberately almost-empty rsudo keysix module containing only rsudo_mod_keysix_help() printing module name and description of linked APISIX+Keycloak administration for authenticated and role-authorized web services. Added module to build.sh and minimal manual. No admin functions, network operations or dependencies added. Verified files in m-rsudo/main at fad7b8b4 and local sh -n/help output; source release and APISIX CI passed."
+product_commit: fad7b8b49ea9b966e56013f1a66736587633ba65
+source_release_ci: https://github.com/massimilianonardi-ai/m-rsudo/actions/runs/45166027320
+product_code_changed: true
