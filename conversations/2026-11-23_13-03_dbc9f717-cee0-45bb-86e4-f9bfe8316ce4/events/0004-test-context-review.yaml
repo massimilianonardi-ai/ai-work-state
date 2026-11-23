@@ -1,0 +1,4 @@
+event_id: 0004
+at: "2026-11-23T14:45:59+01:00"
+kind: user_correction_and_architecture_review
+summary: "User identified contradiction: public local-JSC smoke test invoked via sh instead of mk, despite approved mk-only development lifecycle. User requires an explicit explanation of proposed changes before modifications to mk, and asked whether mk needs context integration. Inspected m-mk execution (dependency delegation, pkg requirement resolution, process spawning) and m-os shell context. Proposed no source changes now; remove redundant public shell smoke test, retain mk test goal, distinguish inherited context from future per-project context activation. Proposed context activation ownership in m-os and optional mk invocation of a stable m-os interface after review; no implicit installs. Product changes paused pending design review."
