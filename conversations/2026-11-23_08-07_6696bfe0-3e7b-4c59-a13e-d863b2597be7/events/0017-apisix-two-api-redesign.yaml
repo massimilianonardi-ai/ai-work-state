@@ -1,0 +1,9 @@
+event_id: 0017
+at: "2026-11-23T12:00:57+01:00"
+kind: major_contract_correction_and_implementation
+summary: "User rejected previous overengineered APISIX main module and explicitly ordered clean rebuild with exactly two public functions: rest forwarding any normal HTTP method/path/optional body using APISIX_KEY, and key reading admin key from required absolute remote config.yaml path using legacy-derived extraction behavior. No helper CRUD/mode/Keycloak functions; APISIX legacy implementation preserved unchanged. Implemented and tested under GitHub Actions Ubuntu+macOS green."
+source: explicit_user_correction_and_action
+product_head: 52dc0c4137ddc92755f48d1ee88a44df9c7fe6e5
+ci_run: https://github.com/massimilianonardi-ai/m-rsudo/actions/runs/45161091065
+ci_conclusion: success
+live_remote_acceptance: not_run
