@@ -1,0 +1,4 @@
+event_id: 0002
+at: "2026-11-23T13:09:07+01:00"
+kind: design_direction_proposed
+summary: "User proposed that development project launch belong to mk (e.g. 'mk run myproject'), rather than adding m run. Verified m-mk already owns project lifecycle, declarative mk.json, arbitrary run goal, dependencies and watch. Present canonical syntax: 'm mk run' in the current project or 'm mk --project myproject run' to select another. 'mk run myproject' currently means two goals, so any alias needs an explicit CLI design decision. No implementation approved."
