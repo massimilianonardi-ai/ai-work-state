@@ -1,0 +1,7 @@
+event_id: 0003
+at: "2026-11-23T08:57:59+01:00"
+kind: specification_approvals
+phase: specification
+summary: "Operator approved kcadm.sh transparent admin CLI proxy scope, m-rsudo remote SSH/sudo execution, native session/auth, exact forwarding contract, acceptance tests, scope exclusions; added environment-defined remote kcadm executable path. Revoked redundant rsudo revalidation and unsupported newline password restriction."
+source: explicit_user_reply
+implementation_authorized: false
