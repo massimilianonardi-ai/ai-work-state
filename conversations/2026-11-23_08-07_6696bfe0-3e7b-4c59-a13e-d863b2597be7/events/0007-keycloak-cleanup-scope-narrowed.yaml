@@ -1,0 +1,8 @@
+event_id: 0007
+at: "2026-11-23T09:31:26+01:00"
+kind: architecture_scope_correction
+phase: architecture
+summary: "Operator requires the two current Keycloak primary source/manual files deleted and recreated wholly from scratch, forbids changes to APISIX legacy module and APISIX primary manual; narrows prior proposal to remove all Keycloak text throughout m-rsudo. Other Keycloaklegacy source/manual remain marked for removal as previously directed, while APISIX integrations are left intact."
+source: explicit_current_user_message
+supersedes: "prior unrestricted removal of Keycloak-specific lines in APISIX modules/manuals"
+product_repository_modified: false
