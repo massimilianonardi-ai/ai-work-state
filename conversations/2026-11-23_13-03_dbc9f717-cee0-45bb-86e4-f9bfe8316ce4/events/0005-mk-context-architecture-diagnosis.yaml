@@ -1,0 +1,4 @@
+event_id: 0005
+at: "2026-11-23T15:06:00+01:00"
+kind: architecture_diagnosis
+summary: "User asked whether mk lagged behind m-os context after environment/package responsibilities moved out of pkg. Code-level comparison confirms partial architectural misalignment, not full duplication: mk retains genuine project-goal/dependency/incremental build ownership; context owns package activation, profiles, PATH/CLASSPATH, envelope, and isolated environment; pkg owns facility constraints and defaults. Concrete mismatch: mk/lib/mk.lib.js _resolveFacilityRequirement queries pkg requirement resolve, which calls pkg_dependency_default_resolve using the system facility default, so its result can differ from selected contextual provider/package. No product changes made; recommendation is audit and simplify requirements/provider/environment boundaries before adding context-specific functionality or examples, do not rewrite mk or force context into all projects."
