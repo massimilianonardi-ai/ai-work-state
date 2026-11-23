@@ -1,0 +1,7 @@
+at_utc: "2026-11-23T13:58:34.675Z"
+kind: requirements_refined
+source_checkpoint: 1
+checkpoint: 2
+phase: specification
+subject: "Whole-infrastructure deployment manager: menu/CLI and deployment.json"
+approval_status: "user requirements verified; implementation architecture pending approval"
