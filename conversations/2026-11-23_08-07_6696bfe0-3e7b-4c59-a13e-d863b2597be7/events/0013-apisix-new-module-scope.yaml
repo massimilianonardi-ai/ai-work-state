@@ -1,0 +1,7 @@
+event_id: 0013
+at: "2026-11-23T11:14:12+01:00"
+kind: new_development_objective_scoping
+summary: "User requests clean-slate rsudo apisix module under same thin external-CLI wrapping methodology as rsudo keycloak. Investigated m-rsudo source and official/APISIX CLI documentation. Native apisix binary is lifecycle-only; a6 by API7 is an external Admin API resource management CLI with A6_SERVER/A6_API_KEY environment (requires APISIX 3.x). Proposed rsudo apisix a6 <args> for review; no product-repository edits pending consequential interface choice and protected APISIX legacy/manual boundary."
+product_repository_changed: false
+proposed_cli: a6
+proposal_approved: false
