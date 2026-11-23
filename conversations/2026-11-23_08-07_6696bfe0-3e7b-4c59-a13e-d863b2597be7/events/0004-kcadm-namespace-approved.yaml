@@ -1,0 +1,7 @@
+event_id: 0004
+at: "2026-11-23T09:12:01+01:00"
+kind: specification_decisions
+phase: architecture
+summary: "Operator approves mandatory RSUDO_KEYCLOAK_PATH with no discovery/fallback, and creates dedicated 'rsudo keycloak kcadm <args>' namespace for universal native CLI forwarding; future simplified functions remain separate. Specification gate satisfied; design enters architecture."
+source: explicit_current_user_message
+implementation_authorized: false
