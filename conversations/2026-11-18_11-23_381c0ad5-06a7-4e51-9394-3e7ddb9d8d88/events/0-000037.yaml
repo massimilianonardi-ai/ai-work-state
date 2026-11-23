@@ -1,0 +1,14 @@
+branch_id: 0
+message_id: 37
+kind: workflow_architecture_approval_gate_correction
+subject: ai-workflow
+cause: "User-observed APISIX development regression: silent choice of large legacy API reconstruction and coding before consolidated architecture review."
+evidence:
+  product_first_impl_commit: 73b90295a75edff7a155f167da93ad13a94a9ed1
+  product_corrected_commit: 52dc0c4137ddc92755f48d1ee88a44df9c7fe6e5
+  verified_ci: "45161091065 success"
+policy_commit: 30af690c11b4830c7daec261cf4ebd71312367d4
+principle: "Disclose material decisions, resolve consequential ambiguity, and rank designs by product quality before first substantive code change."
+validation_state: rules_published_behavior_not_yet_retested
+product_code_changed: false
+task_changes: []
