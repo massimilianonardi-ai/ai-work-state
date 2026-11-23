@@ -427,3 +427,15 @@ conversations/
 **Esito:** nuova conversazione inizializzata, continuità `0/1 → 0/2` e persistenza Git riuscite; **FAIL della conformità del primo checkpoint** alla regola che elimina `requests/`; **PASS del secondo checkpoint**. La finalizzazione opera, ma l'inizializzazione della chat applica in modo incoerente lo schema.
 
 **Prossimo test:** correggere nelle istruzioni del progetto il collegamento al bootstrap canonico (se presente con URL incompleto) e ripetere la creazione di una nuova chat con richiesta ordinaria e un secondo messaggio. Verificare per il *primo* commit l'assenza di `requests/` e presenza di solo `branch-0.yaml`, e al secondo avanzamento il contatore `message_id: 2`. Non modificare i file della chat di prova per non compromettere l'evidenza. P7.1/P7.2 continuano `PARTIAL`; P4–P6 sospesi.
+
+## 22. Riscontro qualitativo in un lavoro reale — modulo rsudo keycloak (23 novembre 2026)
+
+**Fonte:** osservazione diretta riferita dall'utente durante l'implementazione ex novo del modulo `rsudo keycloak`; non è una validazione indipendente del risultato né una prova di codice già funzionante.
+
+**Contesto:** i precedenti tentativi per lo stesso modulo non avevano avuto successo. L'utente segnala una differenza sostanziale nel comportamento della nuova conversazione: gli obiettivi e i confini del progetto sono stati identificati correttamente; l'assistente ha proposto soluzioni pertinenti e contestualizzate, ha contribuito alla definizione dei dettagli delle specifiche e mantiene un disegno architetturale semplice e pulito, focalizzato sui punti cruciali, senza divagazioni.
+
+**Valutazione limitata:** riscontro qualitativo **positivo** nella fase di definizione di specifiche e design. Il giudizio sulla fase di sviluppo, sulla qualità e affidabilità del modulo e sulla verifica del prodotto finito **rimane aperto**. Evitare di convertire questo feedback in un PASS di implementazione, in una modifica non autorizzata al task `rsudo keycloak` o in una conclusione causale non dimostrata sul framework.
+
+**Indicazione di continuità:** osservare senza interferire con il test reale. In seguito confrontare l'implementazione rispetto alle specifiche approvate, ai vincoli di integrazione e ai test eseguiti, distinguendo successi verificati da percezioni positive della fase progettuale.
+
+**Task di test P3:** nessuna modifica autorizzata o effettuata. P7.1/P7.2 restano `PARTIAL`; P4–P6 sospesi.
