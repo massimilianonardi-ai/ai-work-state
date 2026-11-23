@@ -1,0 +1,23 @@
+branch_id: 0
+message_id: 39
+kind: progressive_design_execution_model_proposed
+scope: ai-workflow
+source: user_proposal_2026-11-23
+decision_status: proposed_not_approved
+summary: "Formalize design and execution at increasing abstraction depth; combine concise schemas, technical checkpoints, targeted operator gates, adaptive depth and plan supervision."
+proposed_levels:
+  - objectives_scope
+  - requirements
+  - use_cases_acceptance
+  - system_architecture
+  - component_contracts
+  - code_design_and_control_flows
+  - detailed_test_design
+  - execution_plan
+  - autonomous_implementation
+  - independent_plan_supervision
+  - operational_acceptance
+guidance: "Distinguish operator approval from internal technical reviews and Git persistence; require progressively detailed, scope-proportionate checkpoints."
+framework_rules_changed: false
+product_code_changed: false
+task_changes: []
