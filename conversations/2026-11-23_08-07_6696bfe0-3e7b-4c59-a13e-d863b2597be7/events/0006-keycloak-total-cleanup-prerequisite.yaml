@@ -1,0 +1,8 @@
+event_id: 0006
+at: "2026-11-23T09:22:28+01:00"
+kind: architectural_precondition_change
+phase: architecture
+summary: "User explicitly revokes deferred cleanup: remove ALL current Keycloak implementations and references from m-rsudo before any new rsudo keycloak module development. Scope includes APISIX legacy Keycloak-specific pieces; preserve unrelated rsudo/APISIX functionality. No product mutation on this architecture-only turn."
+source: explicit_current_user_message
+prior_decision_superseded: "defer Keycloak code deletion until after new module"
+product_repository_modified: false
