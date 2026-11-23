@@ -1,0 +1,7 @@
+event_id: 0012
+at: "2026-11-23T10:33:41+01:00"
+kind: ci_integration_verified
+summary: "Integrated Keycloak native kcadm adapter mock test into m-rsudo GitHub Actions, fixed macOS-shell-specific test assignment leak, verified green CI on Ubuntu and macOS at commit 83e63d02. No APISIX modifications. Live SSH/sudo and real Keycloak acceptance remains pending."
+product_head: 83e63d02f5a3f44ce5d02b92c1879931c551424c
+ci_run: https://github.com/massimilianonardi-ai/m-rsudo/actions/runs/45148052058
+ci_conclusion: success
