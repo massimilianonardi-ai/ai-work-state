@@ -1,0 +1,14 @@
+branch_id: 0
+message_id: 32
+kind: architectural_diagnostic_observation
+subject: rsudo-keycloak-real-world-test
+phase: architecture
+source: user_feedback_2026-11-23
+assessment: "Potential integration-boundary difficulty: custom rsudo SSH/sudo/stdin semantics and previous Keycloak implementation context."
+verified:
+  - "m-rsudo/main rsudo_core uses stdin for sudo password and subsequent stream, and consumes piped source in interactive mode."
+  - "Current module has no rsudo_mod_keycloak_kcadm entrypoint and includes legacy Keycloak code."
+  - "Current design snapshot specifies native kcadm CLI forwarding rather than custom REST engine."
+unverified: "Whether these factors actually caused the assistant's digressions or shortcuts."
+product_code_changed: false
+task_changes: []
