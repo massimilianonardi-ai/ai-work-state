@@ -1,0 +1,14 @@
+branch_id: 0
+message_id: 36
+kind: real_world_project_transition_observation
+source: user_report_2026-11-23
+development_chat: "2026-11-23_08-07_6696bfe0-3e7b-4c59-a13e-d863b2597be7"
+prior_module: rsudo-keycloak
+prior_status: "User reports implementation completed; has not personally tested it."
+independent_evidence: "m-rsudo/main commit 83e63d02f5a3f44ce5d02b92c1879931c551424c and GitHub Actions Keycloak verification run 45148052058: success."
+current_module: rsudo-apisix
+current_status: "User reports reimplementation from scratch has started in the same development chat; no new APISIX implementation commit confirmed at observation."
+review_focus: "Check scope separation, source inspection, technical autonomy, simple rsudo integration and verifiable delivery."
+product_modified: false
+framework_rules_modified: false
+task_changes: []
