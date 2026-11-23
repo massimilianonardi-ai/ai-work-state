@@ -1,0 +1,4 @@
+event_id: 0006
+at: "2026-11-23T15:26:47+01:00"
+kind: compatibility_constrained_architecture_revision
+summary: "User explicitly directed: update mk to use m-os context capabilities with strictly targeted changes, compatibility first, analyze impact of every contract/code change, no rewrite of working mk. Inspected current mk engine, pkg requirement resolution and m-os context implementation. Proposed addition only: m-os-owned public isolated context execution/provider resolution bridge, opt-in v2 mk.json context selector array, centralized mk activation and effective provider verification, preserving absent-field behavior. Explicit material contract proposal awaiting operator review/approval before substantive product code writes. Existing mk package bootstrap test scripts must be retained even though ordinary project tests should be mk test. No product code changed this response."
