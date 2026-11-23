@@ -1,6 +1,6 @@
 # AI-Workflow — Product documentation artifact catalog
 
-**Status:** approved documentation principle and proposed artifact catalog, 2026-11-23. Companion to [Progressive Design & Execution](ai-workflow-progressive-design-execution.md). This catalog describes **user-facing/product documentation outputs**, not per-response workflow storage.
+**Status:** approved documentation principle now operationalized by [product documentation rules](https://github.com/massimilianonardi-ai/ai-workflow/blob/main/behavior/product-documentation.md) and [17 templates](https://github.com/massimilianonardi-ai/ai-workflow/tree/main/templates/product-docs), 2026-11-23. Companion to [Progressive Design & Execution](ai-workflow-progressive-design-execution.md). This catalog describes **user-facing/product documentation outputs**, not per-response workflow storage.
 
 ## Principle
 

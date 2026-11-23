@@ -1,6 +1,6 @@
 # AI-Workflow — Progressive Design & Execution
 
-**Design status:** approved by the operator on 2026-11-23, with the explicit correction that rich, concise, independently useful product documentation is **required**, in addition to workflow state. **Runtime status:** not yet implemented as an active phase workflow. This design does not itself change bootstrap execution rules.
+**Design status:** approved by the operator on 2026-11-23, with the explicit correction that rich, concise, independently useful product documentation is **required**, in addition to workflow state. **Runtime status:** activated in `ai-workflow/main` via commits `dd7aa737` and `0bcfc047`, with live behavioral validation pending. Universal bootstrap checkpoint rules remain unchanged.
 
 ## Goal
 
@@ -60,6 +60,8 @@ Use [artifact catalog](ai-workflow-artifact-catalog.md) to select, link and vali
 - Conversation `events/` and `snapshots/` record significant state and resume context, rather than replace product documentation.
 - Product docs explain the system itself, are versioned with its source, and can be consulted directly by users and future assistants.
 
-## Next design work before activation
+## Implementation and remaining verification
 
-Specify the concise per-level content contracts and documents, exact operator approval boundaries, progressive escalation, traceability rules, execution-plan supervision triggers and the complete develop workflow. Validate against observed Keycloak/APISIX failures; then apply approved changes to runtime rules. No automatic change to the active task model or to per-response Git checkpoint frequency.
+The approved model is now operational in [develop.md](https://github.com/massimilianonardi-ai/ai-workflow/blob/main/workflows/develop.md), [progressive-levels.md](https://github.com/massimilianonardi-ai/ai-workflow/blob/main/workflows/progressive-levels.md), [product-documentation.md](https://github.com/massimilianonardi-ai/ai-workflow/blob/main/behavior/product-documentation.md), and [execution-supervision.md](https://github.com/massimilianonardi-ai/ai-workflow/blob/main/behavior/execution-supervision.md). It includes 17 separately reusable product-document templates, descriptive execution-plan milestones and distinct design/develop routing.
+
+Static checks passed. Real development and cross-chat review scenarios must still be tested. Per-response conversation checkpoint rules and the suspension of P4–P6 remain unchanged. See [activation record](ai-workflow-progressive-activation-2026-11-23.md).
