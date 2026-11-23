@@ -1,0 +1,14 @@
+branch_id: 0
+message_id: 38
+kind: code_quality_policy_correction
+source: user_feedback_2026-11-23
+problem: "Reported recurrent responsibility leakage across modules and excessively verbose or complex code."
+evidence_limit: "Broad pattern user-reported; APISIX old/new comparison substantiates avoidable public API expansion, not every alleged module-ownership failure."
+rules_commit: 36fd21614fe6c39602e94411388f1f41693c981d
+principles:
+  - "Map module responsibilities and reuse existing interfaces."
+  - "Choose least-complex complete maintainable solution rather than least coding effort or shortest code."
+  - "Autonomous focused self-review of placement, unnecessary abstraction, duplication and behavior before delivery."
+real_world_improvement_verified: false
+product_code_changed: false
+task_changes: []
