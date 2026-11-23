@@ -1,0 +1,8 @@
+branch_id: 0
+message_id: 35
+kind: cross_conversation_review_concept
+source: user_proposal
+summary: "Use a second independent chat to review an active system-design/development chat from persisted evidence, spot behavioral deviations and provide corrective feedback."
+status: candidate_for_design
+user_decision_required_before_implementation: true
+task_changes: []
