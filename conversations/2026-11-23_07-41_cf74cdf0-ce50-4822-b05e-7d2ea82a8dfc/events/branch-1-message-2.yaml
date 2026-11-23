@@ -1,0 +1,7 @@
+event_type: branch_created
+timestamp: "2026-11-23T07:55:32+01:00"
+branch_id: 1
+message_id: 2
+parent_branch: 0
+fork_message: 1
+reason: "Source continuation from checkpoint 0/1 while remote branch 0 advanced to message 2."
