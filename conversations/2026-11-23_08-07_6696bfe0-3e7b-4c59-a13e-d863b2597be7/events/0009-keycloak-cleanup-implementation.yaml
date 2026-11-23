@@ -1,0 +1,9 @@
+event_id: 0009
+at: "2026-11-23T09:48:07+01:00"
+kind: development_milestone_and_workflow_gap
+summary: "Operator authorizes using rsudo+heredoc to build new module, and raises AI-Workflow autonomy concern. Agent independently cleaned Keycloak legacy and implemented from-scratch kcadm adapter/manual/local regression test in m-rsudo, via separate verified commits. Identified gap: system-design workflow expressly excludes implementation, while no fully specified develop workflow is present. Real Keycloak SSH/sudo end-to-end acceptance is pending."
+source: explicit_current_user_message_plus_verified_product_commits
+product_cleanup_commit: a4ce2accecb0631729f6177b8ce095d4848979d7
+product_implementation_commit: 63daf253fb5ecc289f26244a9e72c1f8431f5794
+workflow_phase: "implementation_ad_hoc_authorized_not_system-design_phase"
+accepted_product_complete: false
