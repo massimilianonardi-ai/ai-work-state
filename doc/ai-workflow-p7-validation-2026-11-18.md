@@ -406,3 +406,22 @@ conversations/
 **Validazione:** verificare il branch finale, le directory `events/` e `snapshots/` in questa chat, l'assenza di `requests/` nel nuovo tree, la conservazione delle altre directory e dei task, e l'assenza di nuovi riferimenti operativi alla vecchia scrittura obbligatoria. Le sezioni storiche P7 anteriori a questa data documentano il comportamento **precedente** e non sono specifica attiva del nuovo schema. I nuovi test P7 dovranno verificare questa policy.
 
 **Nota:** la revisione del protocollo non comporta un cambiamento della numerazione, dell'identità, o dei campi di `branch-N.yaml`; le regole di recovery devono usare la storia verificata dei rami e gli eventi pertinenti, senza fabbricare turni mancanti.
+
+## 21. Validazione dopo eliminazione di `requests/`: nuova chat, due risposte (23 novembre 2026)
+
+**Scenario eseguito dall'utente:** aprire nuova chat AI-Workflow e inviare `Che cos'è un indirizzo IP?`; nella stessa chat inviare `Grazie`. L'utente riporta dalla prima risposta l'avviso: `Incongruenza rilevata: il bootstrap pubblicato richiede ancora requests/` e dalla seconda risposta `Prego! ... checkpoint persisted` con marker `chat-id = 2026-11-23_07-41_cf74cdf0-ce50-4822-b05e-7d2ea82a8dfc; branch-id = 0; message-id = 2`.
+
+**Verifica GitHub — commit:**
+- Prima risposta `27142993705a8d3a4717f4148d9492667f3be287` (parent `8e8e7ba4d0a8f69586288d0dcd020d11bce39565`): crea `conversations/<trial-chat>/branch-0.yaml` **e** `requests/<trial-chat>/0-000001.yaml`. **FAIL:** ricrea la directory eliminata e produce un record per risposta vietato dalla nuova regola. Il file richieste contiene i consueti metadati vuoti e non il transcript.
+- Seconda risposta `5bc47288bcbd24de2deb190cb9d21333ab838acb` (parent `27142993705a8d3a4717f4148d9492667f3be287`): modifica **solo** `conversations/<trial-chat>/branch-0.yaml`, da `message_id: 1` a `message_id: 2`. **PASS:** nessun nuovo request record, evento o snapshot inutile.
+- Stato corrente sperimentale: `message_id: 2`, `tasks: []`, `sync_gaps: []`. Il file include anche `chat_id`, `branch_id` e `updated_at` ridondanti rispetto al modello essenziale precedente: annotato come rilievo separato, senza alterare ora la chat sperimentale.
+- Lo store `ai-work-state/main` conserva, a seguito della prima risposta, `requests/<trial-chat>/0-000001.yaml`. Questa osservazione è preservata come evidenza del FAIL; non è stata rimossa né ricostruita.
+
+**Verifica bootstrap attualmente pubblicato:**
+- `ai-workflow/main` HEAD `eb6aee37f3cddfd3b362f94f16065a1f459bf2c2`; commit di rimozione delle richieste datato 22/11/2026, ore 13:59:38 UTC. Il test nuovo è del 23/11/2026. Il testo corrente del bootstrap dice espressamente che `requests/` e i relativi record per risposta sono dismessi. Quindi **non è vero** che il bootstrap attuale pubblicato su `main` richieda ancora `requests/`.
+- Le istruzioni di questo progetto includono un collegamento non canonico `https://github.com/massimilianonardi-ai/ai-workflow/bootstrap.md`. La prova di accesso via connettore GitHub produce `INVALID_ARGUMENT` per tale URL. Il collegamento canonico `https://github.com/massimilianonardi-ai/ai-workflow/blob/main/bootstrap.md` restituisce il testo aggiornato; anche `fetch_file` del percorso `bootstrap.md` su `main` è riuscito.
+- **Ipotesi, non causa provata:** nella prima risposta sperimentale il bootstrap potrebbe essere stato letto tramite un riferimento sbagliato, una fonte obsoleta o istruzioni non aggiornate, inducendo la scrittura legacy. Non abbiamo i log interni di lettura effettiva della chat sperimentale. Non attribuire causalità certa al client o all'URL senza un nuovo test controllato.
+
+**Esito:** nuova conversazione inizializzata, continuità `0/1 → 0/2` e persistenza Git riuscite; **FAIL della conformità del primo checkpoint** alla regola che elimina `requests/`; **PASS del secondo checkpoint**. La finalizzazione opera, ma l'inizializzazione della chat applica in modo incoerente lo schema.
+
+**Prossimo test:** correggere nelle istruzioni del progetto il collegamento al bootstrap canonico (se presente con URL incompleto) e ripetere la creazione di una nuova chat con richiesta ordinaria e un secondo messaggio. Verificare per il *primo* commit l'assenza di `requests/` e presenza di solo `branch-0.yaml`, e al secondo avanzamento il contatore `message_id: 2`. Non modificare i file della chat di prova per non compromettere l'evidenza. P7.1/P7.2 continuano `PARTIAL`; P4–P6 sospesi.
