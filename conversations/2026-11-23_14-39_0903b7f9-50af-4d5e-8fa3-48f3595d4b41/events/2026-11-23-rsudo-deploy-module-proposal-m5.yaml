@@ -1,0 +1,14 @@
+at_utc: "2026-11-23T14:50:47.215Z"
+kind: architectural_positioning_proposed
+source_checkpoint: 4
+checkpoint: 5
+phase: specification
+proposed_public_api: "rsudo deploy [operation] ..."
+proposed_package: "m-rsudo-deploy"
+proposed_source_repository: "m-rsudo-deploy"
+requires:
+  - "External module lookup within selected m-os package context, not arbitrary PATH"
+  - "Local dispatch before remote credential validation, while preserving validation for remote effects"
+  - "Zero-operation module entry for interactive menu"
+  - "Existing rsudo module/API compatibility tests"
+status: "preferred design, not yet approved or implemented"
