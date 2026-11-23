@@ -20,7 +20,7 @@ Il framework è un **alpha assistito** con persistenza GitHub verificata per i c
 | Repository di stato | `massimilianonardi-ai/ai-work-state`, `main` |
 | Fuso orario | `Europe/Rome` |
 | Identità conversazioni | `chat-id` (UUID v4 + timestamp), `branch-id`, `message-id` |
-| Checkpoint | Un nuovo file `requests/…` immutabile + aggiornamento `conversations/…/branch-N.yaml` per **ogni risposta** |
+| Checkpoint | Aggiornamento di `conversations/<chat-id>/branch-N.yaml` per **ogni risposta**; `events/` solo per modifiche di stato e `snapshots/` quando serve contesto per riprendere il lavoro |
 | Persistenza | Git tree + commit + CAS con `expected_sha`/`force:false` + rilettura del ref e di tutti i file |
 | Stato task | File canonici `task-state.md` / log append-only / handoff; baseline versionata, indici roots/children derivati |
 | Runtime | Assistente e strumenti autorizzati; **nessuno script o runtime ausiliario** richiesto o attivo nel percorso operativo |

@@ -10,7 +10,6 @@
 6. Update task baseline, state, log, handoff, plans and derived indexes only for actual authorized changes. Include associated changed task files, event/snapshot if relevant and the branch checkpoint in the same Git tree/commit.
 7. Read the exact `refs/heads/main` commit SHA `H`, create a tree preserving all other current files, commit with parent `H`, and update `main` conditionally with `expected_sha=H`, `force=false`. Reevaluate on concurrent changes, never silently overwrite.
 8. Read back `main` and every changed file. Report `persisted` only for a verified checkpoint with no unresolved gaps. Otherwise distinguish `persisted_with_gaps`, `write_failed`, `storage_unavailable`, or `write_not_attempted` and retain `sync = pending` as appropriate.
-9. **No `requests/` directory or per-response request record.** Existing historic request records were retired from `main` and are recoverable from Git history before the migration. Do not reconstruct missing content or task associations by guessing.
 
 **Privacy:** this repository remains public. Do not store confidential conversation content or sensitive metadata without an appropriate private destination.
 

@@ -21,8 +21,6 @@ tasks/<task-id>/
 
 The existing `branch-N.yaml` behavior is unchanged: it records the latest response checkpoint and effective task associations. Every assistant response attempts a conditional, verified update of its branch file, even if no task changes. Only meaningful state changes generate immutable files in `events/`; only genuine resume needs generate `snapshots/`. Empty Git directories are not created until they contain a real record.
 
-The standalone `requests/` directory is **retired** and absent from the active tree. Its former files remain recoverable through earlier Git commits; do not create new request records or automatically turn the old empty metadata records into new events.
-
 See [persistence policy](doc/persistence.md) and the rules in [ai-workflow](https://github.com/massimilianonardi-ai/ai-workflow).
 
 ## Public repository privacy warning

@@ -1,0 +1,6 @@
+branch_id: 0
+message_id: 29
+kind: protocol_documentation_simplification
+scope: ai-workflow
+change: "Active instructions now describe only conversations/<chat-id>/branch-N.yaml and on-demand events/ and snapshots/."
+validation: "No obsolete storage-path terminology remains in active operating instructions."
