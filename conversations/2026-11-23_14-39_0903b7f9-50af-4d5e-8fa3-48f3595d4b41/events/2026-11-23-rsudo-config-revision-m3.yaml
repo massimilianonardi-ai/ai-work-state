@@ -1,0 +1,13 @@
+at_utc: "2026-11-23T14:17:33.839Z"
+kind: design_requirements_refined
+source_checkpoint: 2
+checkpoint: 3
+phase: specification
+verified_user_requirements:
+  - "Configuration directory with structured multiple JSON files (preferred over one monolithic file)"
+  - "Mandatory rsudo and its modules for server administration"
+  - "Use existing rsudo-admin-compatible encrypted credentials file flow"
+  - "Possible later integration into rsudo-admin, not required now"
+  - "Apply AI-Workflow progressive design documentation from L1 to L11 as relevant"
+code_changes: none
+approval_status: "requirements recorded; architecture proposal not yet approved"
