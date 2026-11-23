@@ -1,0 +1,7 @@
+event_id: 0003
+at: "2026-11-23T14:34:03+01:00"
+kind: development_example_published
+summary: "User approved mk-centric development workflow. Added additive examples/local-jsc in m-mk/main: Node.js app depends on sibling JSC library project through mk v2 project dependencies; mk goal run/test builds local library first. Added independent isolated smoke test and README, without changing mk engine, jsc, pkg or catalog."
+product_repo: massimilianonardi-ai/m-mk
+product_commit: cf245bd964d1a8b8dfbb6cfec55aeca27ee998ca
+checks: "Committed and read back all ten changed files; JSON syntax valid; Node JS syntax valid; shell syntax valid. Real m-os/JSC runtime smoke test not run (no installed m runtime available here)."
