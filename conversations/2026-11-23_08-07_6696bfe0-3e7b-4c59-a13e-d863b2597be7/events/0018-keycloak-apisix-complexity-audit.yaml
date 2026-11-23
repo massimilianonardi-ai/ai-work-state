@@ -1,0 +1,6 @@
+event_id: 0018
+at: "2026-11-23T12:12:13+01:00"
+kind: read_only_source_complexity_audit
+summary: "Audited actual m-rsudo/main Keycloak and APISIX adapters and rsudo core on user request; no source changes. Keycloak: 1 public function kcadm plus private POSIX quote helper, 83 lines. APISIX: 2 public functions rest and key plus private quote helper, 206 lines. Complexity primarily scripted stdin transport, shell escaping, key extraction awk, curl fd3 security. Risks: no live SSH/sudo tests; stdout key disclosure if unguarded; API bodies in public rsudo args may be logged by dispatcher; config parser not full YAML; both wrappers consume stdin, curl HTTP 4xx body suppressed by --fail. Source-level audit, not runtime vulnerability validation."
+product_head: 52dc0c4137ddc92755f48d1ee88a44df9c7fe6e5
+product_code_changed: false
