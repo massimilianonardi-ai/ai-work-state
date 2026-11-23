@@ -1,0 +1,12 @@
+branch_id: 0
+message_id: 34
+kind: real_world_development_validation_update
+subject: rsudo-keycloak-and-ai-workflow
+findings:
+  - "m-rsudo cleanup and new adapter are committed and verified on main."
+  - "Packaging CI succeeded on product commit 63daf253; its pipeline does not run the Keycloak-specific test."
+  - "Mock adapter test PASS is documented in the development chat; real SSH/sudo and Keycloak acceptance remains pending."
+  - "Development lifecycle workflow coverage merits a separate proposal; per-response checkpoint cadence merits independent review."
+rules_changed: false
+product_changed: false
+task_changes: []
