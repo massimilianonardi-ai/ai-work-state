@@ -1,6 +1,6 @@
 # Active persistence policy — `ai-work-state/main`
 
-**Active destination:** `massimilianonardi-ai/ai-work-state`, branch `main`. The `dev` branch is historical, not a live write target.
+**Active destination:** `massimilianonardi-ai/ai-work-state`, branch `main`.
 
 1. Recover the genuine conversation identity from the current chat, not quoted markers from other chats.
 2. Verify current writable GitHub permissions. A readable bootstrap is not a write capability.

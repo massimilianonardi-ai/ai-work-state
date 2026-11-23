@@ -1,6 +1,6 @@
 # AI-Workflow state store — active branch `main`
 
-This repository holds mutable state for AI-Workflow. All authorized live conversation and task-state updates go to `main`; `dev` contains historical test fixtures.
+This repository holds mutable state for AI-Workflow. All authorized live conversation and task-state updates go to `main`.
 
 ## Active paths
 
@@ -21,7 +21,12 @@ tasks/<task-id>/
 
 The existing `branch-N.yaml` behavior is unchanged: it records the latest response checkpoint and effective task associations. Every assistant response attempts a conditional, verified update of its branch file, even if no task changes. Only meaningful state changes generate immutable files in `events/`; only genuine resume needs generate `snapshots/`. Empty Git directories are not created until they contain a real record.
 
-See [persistence policy](doc/persistence.md) and the rules in [ai-workflow](https://github.com/massimilianonardi-ai/ai-workflow).
+## Reference documents
+
+- [Persistence policy](doc/persistence.md): current state layout and writing behavior.
+- [Current operational handoff](doc/ai-workflow-handoff-2026-11-18.md): validated status and next tests.
+- [AI-Workflow rules](https://github.com/massimilianonardi-ai/ai-workflow): authoritative bootstrap and conditional methods.
+- [P1–P3 test evidence](doc/ai-workflow-validation-p1-p3-2026-11-18.md) and [P7 test evidence](doc/ai-workflow-p7-validation-2026-11-18.md): dated verification records, not operational instructions.
 
 ## Public repository privacy warning
 

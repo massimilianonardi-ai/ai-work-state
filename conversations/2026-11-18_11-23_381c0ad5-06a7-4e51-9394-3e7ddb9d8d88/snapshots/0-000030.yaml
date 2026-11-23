@@ -1,0 +1,13 @@
+branch_id: 0
+message_id: 30
+focus: "AI-Workflow documentation cleanup and next validation"
+state:
+  - "Current behavior comes from the complete ai-workflow/bootstrap.md and relevant conditional documents."
+  - "Conversation branch checkpoints are universal; events represent meaningful state transitions; snapshots preserve resume context."
+  - "Ordinary self-contained requests do not automatically create durable tasks."
+  - "P7.1 and P7.2 are PARTIAL; P4-P6 are suspended; P7.3-P7.5 have not started."
+next:
+  - "Check first and second response behavior in a fresh project conversation against live Git commits."
+  - "Validate event generation and snapshot generation with specific meaningful triggers."
+  - "Validate branch recovery without assuming missing history."
+task_associations: []

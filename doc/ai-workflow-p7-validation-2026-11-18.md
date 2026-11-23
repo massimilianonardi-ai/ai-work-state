@@ -1,5 +1,7 @@
 # AI-Workflow — P7, primo ciclo di verifica (18 novembre 2026)
 
+> **Historical test record.** This document preserves the observations and test conditions as recorded at the time. For current runtime rules use [bootstrap.md](https://github.com/massimilianonardi-ai/ai-workflow/blob/main/bootstrap.md); for current progress and next validation steps use the [operational handoff](ai-workflow-handoff-2026-11-18.md).
+
 **Ambito:** P7.1 comandi e P7.2 routing. **Stato:** verifica documentale completata; validazione end-to-end non ancora completata.
 **Repository regole:** `massimilianonardi-ai/ai-workflow`, `main` = `06f63c57af59197f6c0ca6868ad6ba73f0d91186`.
 **Repository stato, baseline prima del ciclo:** `massimilianonardi-ai/ai-work-state`, `main` = `a0e5acbfa5eb66db6263ba6196ad1070f5bfba72`.

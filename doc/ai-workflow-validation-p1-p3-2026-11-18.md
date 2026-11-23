@@ -1,4 +1,7 @@
 # AI-Workflow — Rapporto di validazione P1–P3
+
+> **Historical test record.** This document preserves the observations and test conditions as recorded at the time. For current runtime rules use [bootstrap.md](https://github.com/massimilianonardi-ai/ai-workflow/blob/main/bootstrap.md); for current progress and next validation steps use the [operational handoff](ai-workflow-handoff-2026-11-18.md).
+
 **Data:** 18 novembre 2026 · **Esito:** 9/9 PASS nei casi osservati · **Ambito:** verifica manuale end-to-end dei checkpoint GitHub.
 
 > Questo documento riporta fatti verificati sul repository di stato, non equivale a una certificazione di produzione. I test sono stati eseguiti con conversazioni ChatGPT reali e controllati sui commit e sui file di `massimilianonardi-ai/ai-work-state`, branch `main`.

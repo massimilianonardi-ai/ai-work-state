@@ -1,0 +1,6 @@
+branch_id: 0
+message_id: 30
+kind: operational_documentation_cleanup
+scope: ai-workflow-and-ai-work-state
+change: "Current instructions and handoff consolidated around the active conversation, event, snapshot and task contracts."
+verified_basis: "Published repository state and dated validation records"
