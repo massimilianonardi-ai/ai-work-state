@@ -1,0 +1,6 @@
+event_id: 0015
+at: "2026-11-23T11:35:49+01:00"
+kind: apisix_scope_confirmed
+phase: specification_and_architecture
+summary: "User restricts new rsudo apisix module exclusively to APISIX Traditional configuration/administration and requires preserving old legacy administrative behavior AND its implementation. Do not modify/remove rsudo-mod-apisixlegacy.lib.sh; new main module must be written anew using native APISIX Admin API over existing rsudo/curl, preserve legacy CLI compatibility. No external products; a6 rejected; no standalone/decoupled implementation. No product repository files changed in this decision turn."
+source: explicit_current_user_message
