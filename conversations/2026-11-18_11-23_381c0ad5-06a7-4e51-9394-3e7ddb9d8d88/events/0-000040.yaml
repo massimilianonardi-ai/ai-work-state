@@ -1,0 +1,14 @@
+branch_id: 0
+message_id: 40
+kind: approved_design_clarification
+topic: progressive_design_execution_documentation
+source: direct_user_approval_2026-11-23
+status: design_approved_runtime_not_yet_implemented
+correction: "Formalization uses existing AI-Workflow state structures AND produces many separate concise but exhaustive diagrams, lists, contracts and external user/product documents for maintenance, future evolution and assistant recovery."
+artifacts:
+  - "doc/ai-workflow-progressive-design-execution.md"
+  - "doc/ai-workflow-artifact-catalog.md"
+design_original: "conversations/2026-11-18_11-23_381c0ad5-06a7-4e51-9394-3e7ddb9d8d88/snapshots/0-000039.md"
+rules_changed: false
+product_code_changed: false
+task_changes: []

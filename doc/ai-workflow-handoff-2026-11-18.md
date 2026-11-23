@@ -41,6 +41,10 @@ The `branch-N.yaml` semantics remain unchanged. Every assistant response attempt
 
 A new-chat two-message check on 23 November demonstrated verified persistence and continuation, but inconsistent first-response behavior. A subsequent documentation cleanup now defines only the current operating model. Its correctness must be checked with a fresh conversation; documentation publication alone is not an end-to-end test.
 
+## Approved design awaiting workflow implementation
+
+The operator approved **Progressive Design & Execution** on 23 November 2026, with a requirement for **many distinct, concise and exhaustive external product documents** in addition to AI-Workflow state. See [design](ai-workflow-progressive-design-execution.md) and [artifact catalog](ai-workflow-artifact-catalog.md). Formalize detailed level contracts, operator gates and independent execution supervision before publishing the develop workflow; existing runtime rules remain active meanwhile.
+
 ## Next authorized validation
 
 1. Start a **new conversation** in the AI-Workflow project with an ordinary question; verify the first Git commit contains exactly that chat's `branch-0.yaml` unless a genuine event/snapshot was needed.

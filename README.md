@@ -26,6 +26,7 @@ The existing `branch-N.yaml` behavior is unchanged: it records the latest respon
 - [Persistence policy](doc/persistence.md): current state layout and writing behavior.
 - [Current operational handoff](doc/ai-workflow-handoff-2026-11-18.md): validated status and next tests.
 - [AI-Workflow rules](https://github.com/massimilianonardi-ai/ai-workflow): authoritative bootstrap and conditional methods.
+- [Approved progressive design](doc/ai-workflow-progressive-design-execution.md) and [product documentation artifact catalog](doc/ai-workflow-artifact-catalog.md): design agreed with the operator, not yet active runtime workflow.
 - [P1–P3 test evidence](doc/ai-workflow-validation-p1-p3-2026-11-18.md) and [P7 test evidence](doc/ai-workflow-p7-validation-2026-11-18.md): dated verification records, not operational instructions.
 
 ## Public repository privacy warning
