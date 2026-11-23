@@ -1,0 +1,10 @@
+branch_id: 0
+message_id: 33
+kind: workflow_responsibility_policy_update
+subject: ai-workflow
+source: direct_user_feedback_2026-11-23
+summary: "Operator owns outcomes and consequential decisions; assistant owns code inspection, detailed technical design, coding, debugging and validation within approved scope."
+rules_commit: 991f11dc117b6279b36d853f99350b4f77f30ad5
+real_world_behavior_validated: false
+product_code_changed: false
+task_changes: []
