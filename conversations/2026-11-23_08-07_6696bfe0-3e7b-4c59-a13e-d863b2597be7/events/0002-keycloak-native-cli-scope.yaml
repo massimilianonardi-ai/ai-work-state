@@ -1,0 +1,7 @@
+event_id: 0002
+at: "2026-11-23T08:18:49+01:00"
+kind: requirement_refinement
+phase: specification
+summary: "Operator fixes Keycloak module redesign: native kcadm.sh, password through environment, m-rsudo ownership; existing Keycloak implementations failed, retirement deferred."
+authority: explicit_current_user_message
+implementation_authorized: false
