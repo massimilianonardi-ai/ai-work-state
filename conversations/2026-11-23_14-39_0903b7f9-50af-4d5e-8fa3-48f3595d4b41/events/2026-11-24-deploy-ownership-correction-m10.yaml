@@ -1,0 +1,17 @@
+at_utc: "2026-11-24T07:32:50.188Z"
+kind: requirement_revision_and_compatibility_boundaries
+source_checkpoint: 9
+checkpoint: 10
+phase: specification
+operator_directives:
+  rsudo: "immutable, including dispatcher and credential model"
+  rsudo_admin: "only add Deploy menu item calling sourceable library"
+  protected_modules: ["fs", "db-pg", "exec"]
+  approval_gated_modules: ["apisix", "keycloak", "keysix"]
+  rsudo_deploy_module: "remote operations only through established rsudo credential contract"
+  local_operations: "outside native rsudo deploy module, in sourceable deployment libraries"
+invalidated_prior_overgeneralization:
+  references: ["doc/deploy/requirements.md REQ-03", "doc/deploy/interfaces.md IF-03", "doc/deploy/decisions.md ADR-02"]
+  status: needs_revalidation
+product_repository_modified: false
+next: "Clarify local CLI surface, JSON authority and first accepted resource before dependent code"
