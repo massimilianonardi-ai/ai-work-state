@@ -32,3 +32,7 @@ source:
 - Source: current conversation checkpoint 2.
 - Approved link/lib/js and NODE_PATH = JS_PATH. Browser and node_modules integration investigated; proposals remain unapproved.
 - Inspected pkg/context code and ran isolated Node 22.16.0 resolution probes. No source edits; STEP-01 remains in progress.
+
+### EV-0004 — 2026-11-24 — Prefer native node_modules
+- Operator conditional preference: eliminate NODE_PATH if node_modules is feasible.
+- Verified isolated ESM transitive dependency behavior: default symlink projection fails; preserve-symlinks or per-package dependency links succeed. Existing mk context and dependency interfaces inspected. No source changes.

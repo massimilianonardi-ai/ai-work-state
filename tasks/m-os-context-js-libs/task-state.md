@@ -34,9 +34,12 @@ Resolve the general JS-library selection and loading contract for development an
 - User explicitly delegated whether to create separate task; creation is authorized, architecture changes not yet approved.
 No code changes. link/lib/js and NODE_PATH = JS_PATH approved at checkpoint 2; node_modules projection, export shapes and browser adapter remain proposals.
 
-Baseline [v002](baseline-v002.md); [specification](task-specification.md); proposed plan plans/plan-001.yaml; latest EV-0003.
+Baseline [v003](baseline-v003.md); [specification](task-specification.md); proposed plan plans/plan-001.yaml; latest EV-0004.
 
 ## Approved decisions — checkpoint 2 (2026-11-24)
 - pkg v2 declarative export namespace: `link/lib/js`.
 - Context canonical JS_PATH and equality NODE_PATH = JS_PATH; investigate integration, not approval of all loader/projection choices.
 - Browser support is a primary use case. Preserve existing task scope and no substantive implementation until consequential synthesis is approved.
+
+## Checkpoint 3 — revised direction
+Operator prefers native node_modules and removing NODE_PATH if feasible. This conditionally supersedes the earlier NODE_PATH = JS_PATH requirement. Do not build a dual resolution mechanism. Retain link/lib/js; JS_PATH retained provisionally for runtime-neutral discovery/browser pending necessity assessment. No approval yet of detailed projection lifecycle or dependency layout.

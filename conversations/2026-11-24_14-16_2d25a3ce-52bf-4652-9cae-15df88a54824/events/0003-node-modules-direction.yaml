@@ -1,0 +1,7 @@
+message_id: 3
+branch_id: 0
+event: task_requirements_refined
+task: "task:m-os-context-js-libs"
+phase: specification
+baseline: baseline-v003.md
+preference: "Remove NODE_PATH if native node_modules integration is feasible"
