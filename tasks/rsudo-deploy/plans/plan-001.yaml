@@ -1,0 +1,46 @@
+# Initial immutable plan revision at task registration; planning only.
+id: "plan-001"
+task: "task:rsudo-deploy"
+revision: 1
+supersedes: null
+steps: []
+milestones:
+  - id: STEP-01
+    after: []
+    deliverable: "Consolidated initial functional requirements and past interface slice"
+    artifacts: ["m-rsudo@27705b4ac4dedb1bc4f1ee2d178d9efa7c3ec57a:doc/deploy", "m-rsudo@05d1b08791a3f85c47b619a2f1169edbe5953332"]
+    checks: ["D01-D08 answered; initial interface CI historical, revised CLI pending"]
+    status: "historical_partial_verified"
+  - id: STEP-02
+    after: [STEP-01]
+    deliverable: "Concrete read-only acquisition contract and separately authorized collection"
+    artifacts: ["doc/deploy/resource-model.md", "doc/deploy/initial-acquisition.md"]
+    checks: ["both configuration levels, redaction, completeness, explicit unknowns, no remote writes"]
+    status: planned
+  - id: STEP-03
+    after: [STEP-02]
+    deliverable: "Review observed configuration and normalize initial desired project; JSON and reference/dependency contract"
+    checks: ["reviewed baseline; unknowns block affected operations"]
+    status: planned
+  - id: STEP-04
+    after: [STEP-03]
+    deliverable: "Complete L4-L8 architecture, CLI, preparation/apply/evidence and tests"
+    checks: ["consequential choice synthesis reviewed and approved before substantive code"]
+    status: planned
+  - id: STEP-05
+    after: [STEP-04]
+    deliverable: "Revised library CLI and first read-only vertical slice"
+    checks: ["new local and remote integration boundaries verified; protected components unchanged"]
+    status: planned
+  - id: STEP-06
+    after: [STEP-05]
+    deliverable: "Authorized selected deployment and independent end-to-end verification"
+    checks: ["actual accepted app behavior; negative access cases; logs and partial failure handling"]
+    status: planned
+  - id: STEP-07
+    after: [STEP-06]
+    deliverable: "Operational documentation, acceptance, authorized release and handoff"
+    checks: ["explicit verified acceptance; limitations disclosed"]
+    status: planned
+parallel_groups: []
+completion_gates: ["separate approval for missing dependency tasks and protected module changes", "architecture and implementation approval", "authorized live environment and actual use-case evidence"]
