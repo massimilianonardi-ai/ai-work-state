@@ -45,7 +45,7 @@ Product source revision 05d1b08791a3f85c47b619a2f1169edbe5953332; product docume
 ## Relationships and readiness
 
 Parent null; dependencies [] (no verified separate dependency tasks created); children index empty; active plan plans/plan-001.yaml is a proposed planning revision, not execution permission. Task status independent of any future children.
-Specification: [task-specification.md](task-specification.md). Baseline: [baseline-v001.md](baseline-v001.md) (first actual task baseline, recorded now). Latest event EV-0018. Documentation-only design authorized and published; no new implementation/live access authorized. Next: acquisition review and execution-scope approval.
+Specification: [task-specification.md](task-specification.md). Baseline: [baseline-v001.md](baseline-v001.md) (first actual task baseline, recorded now). Latest event EV-0019. Documentation-only design authorized and published; no new implementation/live access authorized. Next: acquisition review and execution-scope approval.
 
 ## STEP-02 progress — 2026-11-24, resumed checkpoint 0/2
 
@@ -86,3 +86,7 @@ Operator invoked bare context then rsudo-admin; admin command resolved but repor
 ## STEP-02 acquisition retry — checkpoint 0/11
 
 Operator returned second acquisition smoke-test log after runtime context troubleshooting. APISIX key acquisition failed, remaining APISIX reads skipped; Keycloak realm GET failed status 127, LDAP/client reads skipped; no JSON files. Previous status 16 no longer observed. Verified v0.1.4 source: Keycloak adapter explicitly returns 127 for missing/non-executable remote kcadm path; APISIX key returns 66 for unreadable/missing config, 67 for admin key extraction failure. Transport or other execution failure not excluded without stderr. Prior job paths were unverified examples; request two sanitized stderr files/messages, no secret contents, before changing job or product. No release, source modification or remote execution. STEP-02 remains refining; runtime and live reads not fully verified.
+
+## STEP-02 parameter correction — checkpoint 0/12
+
+Operator confirmed APISIX config path is correct and supplied corrected absolute Keycloak kcadm executable path, different from example job path. Keep APISIX path unchanged; replace RSUDO_KEYCLOAK_PATH in the existing job with operator-supplied path. Exact environment-specific path not persisted in public state. Repeat bounded read-only acquisition; APISIX failure still requires sanitized apisix-key.stderr, and actual Keycloak execution/authentication remains unverified. No product modifications or new release.

@@ -1,0 +1,10 @@
+event: acquisition_parameters_corrected
+branch_id: 0
+message_id: 12
+task: "task:rsudo-deploy"
+task_event: EV-0019
+milestone: STEP-02
+status: refining
+apisix_config_path_confirmed_by_operator: true
+keycloak_executable_path_corrected_by_operator: true
+live_read_verified: false
