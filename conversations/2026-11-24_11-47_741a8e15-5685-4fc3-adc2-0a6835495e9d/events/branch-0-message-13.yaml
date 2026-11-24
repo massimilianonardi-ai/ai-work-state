@@ -1,0 +1,12 @@
+event: apisix_legacy_extraction_release
+branch_id: 0
+message_id: 13
+task: "task:rsudo-deploy"
+task_event: EV-0020
+milestone: STEP-02
+status: refining
+release: v0.1.5
+release_verified: true
+catalog_verified: true
+live_read_verified: false
+keycloak_last_exit: 1

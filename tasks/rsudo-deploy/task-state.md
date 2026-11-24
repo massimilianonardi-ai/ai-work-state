@@ -45,7 +45,7 @@ Product source revision 05d1b08791a3f85c47b619a2f1169edbe5953332; product docume
 ## Relationships and readiness
 
 Parent null; dependencies [] (no verified separate dependency tasks created); children index empty; active plan plans/plan-001.yaml is a proposed planning revision, not execution permission. Task status independent of any future children.
-Specification: [task-specification.md](task-specification.md). Baseline: [baseline-v001.md](baseline-v001.md) (first actual task baseline, recorded now). Latest event EV-0019. Documentation-only design authorized and published; no new implementation/live access authorized. Next: acquisition review and execution-scope approval.
+Specification: [task-specification.md](task-specification.md). Baseline: [baseline-v001.md](baseline-v001.md) (first actual task baseline, recorded now). Latest event EV-0020. Documentation-only design authorized and published; no new implementation/live access authorized. Next: acquisition review and execution-scope approval.
 
 ## STEP-02 progress — 2026-11-24, resumed checkpoint 0/2
 
@@ -90,3 +90,7 @@ Operator returned second acquisition smoke-test log after runtime context troubl
 ## STEP-02 parameter correction — checkpoint 0/12
 
 Operator confirmed APISIX config path is correct and supplied corrected absolute Keycloak kcadm executable path, different from example job path. Keep APISIX path unchanged; replace RSUDO_KEYCLOAK_PATH in the existing job with operator-supplied path. Exact environment-specific path not persisted in public state. Repeat bounded read-only acquisition; APISIX failure still requires sanitized apisix-key.stderr, and actual Keycloak execution/authentication remains unverified. No product modifications or new release.
+
+## STEP-02 legacy extraction release — checkpoint 0/13
+
+Operator explicitly authorized restoring original APISIX legacy key extraction and release. Latest acquisition retry log: APISIX key failed; Keycloak realms now exit 1 instead of 127; no JSON. Restored cat/sed/tr pipeline verbatim except parameterized config path, retained existing transport/readability/empty-result checks. Legacy module, REST, Keycloak and other runtime modules unchanged. Documented and tested legacy layout limitation: later role: admin may select wrong field; no general YAML parsing claim. Initial publication run 45418064031 failed due test fixture escaping, corrected fixture only; successful publication run 45418221336, v0.1.5 tag and archive/checksum verified, source dab3dbeb2553d9a0229b94efff30b00a7d696047. Catalog main b631e64ef396cbe8594de48aa35b946bf34ccae2 verified with new version range identical to v0.1.4 projection and appended versions entry. Dedicated public installation workflow at e3d0eb91c6e8e4a84f597f9a5594e4f4394c8681 run 45418370688 status completed conclusion success. Operator must update configured catalog source/cache, install and select v0.1.5, rerun acquisition; Keycloak exit 1 requires sanitized stderr. No live verification; STEP-02 refining.
