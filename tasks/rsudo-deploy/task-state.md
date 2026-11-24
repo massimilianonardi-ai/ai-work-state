@@ -45,7 +45,7 @@ Product source revision 05d1b08791a3f85c47b619a2f1169edbe5953332; product docume
 ## Relationships and readiness
 
 Parent null; dependencies [] (no verified separate dependency tasks created); children index empty; active plan plans/plan-001.yaml is a proposed planning revision, not execution permission. Task status independent of any future children.
-Specification: [task-specification.md](task-specification.md). Baseline: [baseline-v001.md](baseline-v001.md) (first actual task baseline, recorded now). Latest event EV-0011. Documentation-only design authorized and published; no new implementation/live access authorized. Next: acquisition review and execution-scope approval.
+Specification: [task-specification.md](task-specification.md). Baseline: [baseline-v001.md](baseline-v001.md) (first actual task baseline, recorded now). Latest event EV-0012. Documentation-only design authorized and published; no new implementation/live access authorized. Next: acquisition review and execution-scope approval.
 
 ## STEP-02 progress — 2026-11-24, resumed checkpoint 0/2
 
@@ -58,3 +58,7 @@ Operator approved rsudo-admin > rsudo jobs, local output redirection and a bound
 ## STEP-02 first smoke-test result — checkpoint 0/4
 
 Operator returned first smoke-test summary. All three APISIX GET operations and Keycloak realm GET failed with status 16 in approximately one second; no JSON artifacts. LDAP/client reads skipped. Native dispatcher at m-rsudo@a90b0ed9be31ef37d63a79ec492dcb2f3a742b4f returns 16 when delegated function is unavailable; actual stderr and selected installed concrete are not yet inspected, so cause remains provisional. Request sanitized stderr for APISIX routes and Keycloak realms and optionally a local-only module resolution check. No retry, protected code edit, new dependency task, or claim of API/auth/transport failure. STEP-02 still refining; resolve installed module availability before further collection.
+
+## STEP-02 diagnosis — checkpoint 0/5
+
+Compared last published release m-rsudo/v0.1.3 (2026-11-18) against main a90b0ed9be31ef37d63a79ec492dcb2f3a742b4f. Release modules have legacy get functions and APISIX key, but lack apisix rest and keycloak kcadm; main has both requested new functions. This explains observed exit 16 if older installed concrete selected, but actual local version is unverified. APISIX module blob IDs release 4be87edb9856daa4e9577e229fd58873840d4fcf / main b96c0a3533ff5608c1c02ad3ed6e95b758b07a7a; Keycloak release 698ca2e9ffbcf0ff251a5d2cae5515bb85d59a00 / main 7d7967f451436972254b74503f93760ec1928c7a. Provide local-only job using actual dispatcher lookup, file digest and function checks; operator runs within same rsudo-admin context with prior source-only library. No remote commands, upgrade, release, product edits or new dependency task authorized/performed. Await diagnostic log, then decide installed-version correction versus actual defect.

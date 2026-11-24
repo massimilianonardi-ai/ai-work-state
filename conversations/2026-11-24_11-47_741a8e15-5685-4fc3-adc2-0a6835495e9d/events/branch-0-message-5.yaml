@@ -1,0 +1,10 @@
+event: acquisition_failure_diagnosis
+branch_id: 0
+message_id: 5
+task: "task:rsudo-deploy"
+task_event: EV-0012
+milestone: STEP-02
+phase: architecture
+status: refining
+hypothesis: installed_release_interface_mismatch
+root_cause_confirmed: false
