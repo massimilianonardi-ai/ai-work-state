@@ -1,0 +1,4 @@
+event_id: 0012
+at: "2026-11-24T09:53:00+01:00"
+kind: operator_corrected_textedit_dependency_architecture
+summary: "Operator explicitly corrected previous proposal: Step 1 m-textedit is fully standalone from m-js-core and carries the m/text source tree currently in m-js-core, plus GUI under m/text/ui; m-textedit-web consumes m-textedit only. Step 2 adds Electron desktop consuming same m-textedit, still no m-js-core dependency. Step 3 is forward-only refactor: remove copied core document/selection engine implementations from m-textedit, source them from m-js-core dependency; GUI stays in m-textedit/m/text/ui for now, not separate library. Also add direct m-js-core library/pkg consumption to browser service and Electron app for concrete utilities. Do not maintain duplicate implementations/fallback; historical releases immutable. Assistant explicitly withdrew earlier immediate m-js-core dependency proposal. No product code modified."
