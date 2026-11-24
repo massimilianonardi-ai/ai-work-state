@@ -1,0 +1,4 @@
+event_id: 0010
+at: "2026-11-24T08:15:25+01:00"
+kind: user_proposed_textedit_real_world_validation
+summary: "User proposed validating original m-os mk/jsc/context/pkg development-to-production goal by continuing legacy TextEdit as a separate JavaScript library, consumed by two real applications: Electron desktop text editor command and Node web server serving browser editor, then publishing/installing either one package with two commands or two packages. Assistant inspected actual m-js-core and m-js-extra repositories, supports proposal, recommends one common TextEdit engine+renderer with backend file-IO adapters and two independently released packages, with embedded library artifacts first and separately installed shared JS library later as explicit pkg contract validation. This is a design recommendation, not an implementation authorization. No product code changes."
