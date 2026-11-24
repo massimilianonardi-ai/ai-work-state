@@ -1,0 +1,12 @@
+event: apisix_live_reads_passed
+branch_id: 0
+message_id: 14
+task: "task:rsudo-deploy"
+task_event: EV-0021
+milestone: STEP-02
+status: refining
+apisix_certificates: passed
+apisix_services: passed
+apisix_routes: passed
+keycloak_realms_exit_status: 1
+full_acquisition_verified: false

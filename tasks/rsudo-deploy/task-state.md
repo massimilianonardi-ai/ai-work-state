@@ -45,7 +45,7 @@ Product source revision 05d1b08791a3f85c47b619a2f1169edbe5953332; product docume
 ## Relationships and readiness
 
 Parent null; dependencies [] (no verified separate dependency tasks created); children index empty; active plan plans/plan-001.yaml is a proposed planning revision, not execution permission. Task status independent of any future children.
-Specification: [task-specification.md](task-specification.md). Baseline: [baseline-v001.md](baseline-v001.md) (first actual task baseline, recorded now). Latest event EV-0020. Documentation-only design authorized and published; no new implementation/live access authorized. Next: acquisition review and execution-scope approval.
+Specification: [task-specification.md](task-specification.md). Baseline: [baseline-v001.md](baseline-v001.md) (first actual task baseline, recorded now). Latest event EV-0021. Documentation-only design authorized and published; no new implementation/live access authorized. Next: acquisition review and execution-scope approval.
 
 ## STEP-02 progress — 2026-11-24, resumed checkpoint 0/2
 
@@ -94,3 +94,7 @@ Operator confirmed APISIX config path is correct and supplied corrected absolute
 ## STEP-02 legacy extraction release — checkpoint 0/13
 
 Operator explicitly authorized restoring original APISIX legacy key extraction and release. Latest acquisition retry log: APISIX key failed; Keycloak realms now exit 1 instead of 127; no JSON. Restored cat/sed/tr pipeline verbatim except parameterized config path, retained existing transport/readability/empty-result checks. Legacy module, REST, Keycloak and other runtime modules unchanged. Documented and tested legacy layout limitation: later role: admin may select wrong field; no general YAML parsing claim. Initial publication run 45418064031 failed due test fixture escaping, corrected fixture only; successful publication run 45418221336, v0.1.5 tag and archive/checksum verified, source dab3dbeb2553d9a0229b94efff30b00a7d696047. Catalog main b631e64ef396cbe8594de48aa35b946bf34ccae2 verified with new version range identical to v0.1.4 projection and appended versions entry. Dedicated public installation workflow at e3d0eb91c6e8e4a84f597f9a5594e4f4394c8681 run 45418370688 status completed conclusion success. Operator must update configured catalog source/cache, install and select v0.1.5, rerun acquisition; Keycloak exit 1 requires sanitized stderr. No live verification; STEP-02 refining.
+
+## STEP-02 APISIX live reads — checkpoint 0/14
+
+Operator acquisition retry after v0.1.5 release: APISIX key acquisition succeeded implicitly (GETs executed); certificates, services and routes GET all reported OK and produced JSON. Live read smoke test for these three APISIX collections passed; completeness, pagination and actual contents not yet independently verified. Keycloak realm GET still exit 1; LDAP and client GETs not reached. Need sanitized keycloak-realms.stderr to diagnose actual CLI/transport/authentication failure; do not change Keycloak code or issue new release before evidence. Keep APISIX unchanged. No real config writes or further source edits. STEP-02 remains refining, partial acquisition.
