@@ -45,7 +45,7 @@ Product source revision 05d1b08791a3f85c47b619a2f1169edbe5953332; product docume
 ## Relationships and readiness
 
 Parent null; dependencies [] (no verified separate dependency tasks created); children index empty; active plan plans/plan-001.yaml is a proposed planning revision, not execution permission. Task status independent of any future children.
-Specification: [task-specification.md](task-specification.md). Baseline: [baseline-v001.md](baseline-v001.md) (first actual task baseline, recorded now). Latest event EV-0017. Documentation-only design authorized and published; no new implementation/live access authorized. Next: acquisition review and execution-scope approval.
+Specification: [task-specification.md](task-specification.md). Baseline: [baseline-v001.md](baseline-v001.md) (first actual task baseline, recorded now). Latest event EV-0018. Documentation-only design authorized and published; no new implementation/live access authorized. Next: acquisition review and execution-scope approval.
 
 ## STEP-02 progress — 2026-11-24, resumed checkpoint 0/2
 
@@ -82,3 +82,7 @@ Operator reported clean local catalog cache main at eacaa2ac25f1b7a983269e1af2b9
 ## STEP-02 runtime selection — checkpoint 0/10
 
 Operator invoked bare context then rsudo-admin; admin command resolved but reported selected m-rsudo library view unavailable (status 5). Verified v0.1.4 bin/sys/rsudo-admin: lookup returns 5 when no matching concrete-local m-rsudo library directory occurs in PATH. Verified m-os context manual at 359469c59633f90c5f81e7825712544a15467c37: bare context uses account defaults; explicit pkg selections add command and library paths, and --set-defaults persists supplied dimensions without changing current shell. Recommend explicit coordinated m-core v0.1.1, m-term v0.1.1, m-rsudo v0.1.4 selection, verify status and rerun admin. Optional persistent defaults only if operator desires. Installation success and selected concrete version not independently established from supplied output; no source changes or remote reads. STEP-02 remains refining.
+
+## STEP-02 acquisition retry — checkpoint 0/11
+
+Operator returned second acquisition smoke-test log after runtime context troubleshooting. APISIX key acquisition failed, remaining APISIX reads skipped; Keycloak realm GET failed status 127, LDAP/client reads skipped; no JSON files. Previous status 16 no longer observed. Verified v0.1.4 source: Keycloak adapter explicitly returns 127 for missing/non-executable remote kcadm path; APISIX key returns 66 for unreadable/missing config, 67 for admin key extraction failure. Transport or other execution failure not excluded without stderr. Prior job paths were unverified examples; request two sanitized stderr files/messages, no secret contents, before changing job or product. No release, source modification or remote execution. STEP-02 remains refining; runtime and live reads not fully verified.

@@ -1,0 +1,11 @@
+event: acquisition_retry_failed
+branch_id: 0
+message_id: 11
+task: "task:rsudo-deploy"
+task_event: EV-0018
+milestone: STEP-02
+status: refining
+apisix_key_acquisition: failed
+keycloak_realms_exit_status: 127
+json_artifacts: 0
+root_cause_confirmed: false
