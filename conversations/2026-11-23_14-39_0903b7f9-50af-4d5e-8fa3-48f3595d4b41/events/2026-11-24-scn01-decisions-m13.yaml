@@ -1,0 +1,12 @@
+at_utc: "2026-11-24T09:49:36.684Z"
+kind: scenario_scope_refined
+source_checkpoint: 12
+checkpoint: 13
+phase: specification
+product_repository: "massimilianonardi-ai/m-rsudo"
+product_commit: "193a2c8a047d8a089a75b4d2af294f12fa157959"
+product_changes: "9 deployment documentation files"
+status: "D01-D04 substantially resolved; narrower residual scope questions and read-only discovery pending"
+open_questions: ["entry hosting/navigation and URL pattern", "internal transport TLS boundary and certificate phase", "identity resource ownership and permitted operational assignment changes", "initial export and import scope"]
+code_changed: false
+remote_operations: false

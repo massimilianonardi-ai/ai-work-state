@@ -1,0 +1,7 @@
+# SCN-01 decision refinement (checkpoint 13)
+
+Operator answered D01–D04. Canonical requirements and decisions recorded in m-rsudo doc/deploy at verified docs-only commit `193a2c8a047d8a089a75b4d2af294f12fa157959`. Nine files updated and read back. Refer to scenario-01-decisions.md, requirements.md (REQ-16–20) and scenario-01-acceptance.md (SCN-A13–18). No real environment coordinates, secrets or exports acquired; no code/server change.
+
+Key refinements: preserve current HTTPS entry topology; structural deployment-owned configuration vs authorized routine identity-assignment administration; authoritative source revision and initial configuration export. Prior managed-subset-only proposal superseded. Detailed revision binding, safe import and preservation of ordinary associations remain proposed engineering contracts. No automatic drift repair or implicit deletion. Existing protected module restrictions unchanged.
+
+Four residual questions: Q01 entry hosting/ownership/navigation/URL patterns; Q02 HTTPS boundary for upstream and certificate scope timing; Q03 identity/group ownership and treatment of normal assignments; Q04 global settings vs initial focused managed scope, export/review transition. After answers, design read-only discovery/import and review before dependent architecture and implementation. No external reverse-proxy redesign prerequisite, no new tasks or code authorization. Phase specification.
