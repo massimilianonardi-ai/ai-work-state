@@ -1,0 +1,18 @@
+at_utc: "2026-11-24T08:37:32.011Z"
+kind: requirements_approved_and_product_docs_updated
+source_checkpoint: 10
+checkpoint: 11
+phase: specification
+operator_approved:
+  cli: "rsudo-deploy calls full sourceable library CLI, combining local operations and existing rsudo remote operations"
+  desired_project: "staged and revisable; selected/full deployment applies plan; observed drift separate; redeployment manual"
+  initial_target: "existing APISIX, Keycloak, nginx; authenticated/authorized HTML/JS/CSS apps via URLs"
+  task_boundary: "deploy only; missing or changed existing rsudo modules/other tools separate tasks"
+  preparation: "preflight/diff/blockers for hours-long work, precise logging and independent verification"
+product_documentation:
+  repository: "massimilianonardi-ai/m-rsudo"
+  commit: "c69da1ee14cf9c44cb8f9d40ac1b595608e78359"
+  count: 15
+code_changed: false
+remote_actions: false
+open: "concrete target topology/authz ownership and detailed plan safety contract"
