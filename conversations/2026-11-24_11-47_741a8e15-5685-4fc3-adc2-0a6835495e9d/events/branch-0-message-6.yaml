@@ -1,0 +1,14 @@
+event: dependency_release_published
+branch_id: 0
+message_id: 6
+task: "task:rsudo-deploy"
+task_event: EV-0013
+milestone: STEP-02
+phase: architecture
+status: refining
+release: v0.1.4
+product_revision: "6833394026174c254bd15da89042d2938c9bb734"
+catalog_revision: "a7c3cd8e2bbf9c9a224c738ad440eeecd925dfea"
+release_workflow_run: 45402444549
+release_verified: true
+live_result_verified: false
