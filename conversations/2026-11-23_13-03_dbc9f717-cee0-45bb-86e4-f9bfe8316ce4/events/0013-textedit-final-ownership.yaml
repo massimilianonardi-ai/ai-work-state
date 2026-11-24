@@ -1,0 +1,4 @@
+event_id: 0013
+at: "2026-11-24T10:04:29+01:00"
+kind: operator_final_textedit_ownership_correction
+summary: "Authoritative operator clarification: remove ALL TextEdit references and m/text from m-js-core; m-js-textedit owns the entire logical engine currently in m-js-core/m/text except GUI; m-js-textedit-gui owns the PoC GUI under m/text/ui. Operator delegates migration path. This explicitly supersedes the reversed ownership interpretation in event/snapshot 0012 and earlier proposed structures. Assistant recommends direct creation of final separate repositories, removing m/text from core only after verified extraction, retaining old release history, then adding web and Electron consumers and later their direct general m-js-core dependency. No product code changed."
