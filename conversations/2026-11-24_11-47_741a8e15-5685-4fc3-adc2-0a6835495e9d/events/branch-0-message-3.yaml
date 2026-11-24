@@ -1,0 +1,11 @@
+event: acquisition_smoke_test_authorized
+branch_id: 0
+message_id: 3
+task: "task:rsudo-deploy"
+task_event: EV-0010
+milestone: STEP-02
+milestone_progress: operator_run_read_test_pending
+phase: architecture
+status: refining
+product_source_changed: false
+live_result_verified: false
