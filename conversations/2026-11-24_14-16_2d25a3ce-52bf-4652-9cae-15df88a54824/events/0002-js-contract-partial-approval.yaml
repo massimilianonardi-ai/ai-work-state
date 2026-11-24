@@ -1,0 +1,9 @@
+message_id: 2
+branch_id: 0
+event: task_requirements_refined
+task: "task:m-os-context-js-libs"
+approved:
+  - "link/lib/js"
+  - "NODE_PATH = JS_PATH"
+phase: specification
+baseline: baseline-v002.md

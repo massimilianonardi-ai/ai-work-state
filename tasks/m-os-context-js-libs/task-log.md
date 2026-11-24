@@ -27,3 +27,8 @@ source:
 - Source: operator current registration request; assistant delegated choice.
 - Decision: independent root task, no dependencies identified; task:textedit-app-service depends on it. Separate infrastructure ownership.
 - Effect: refinement may proceed; no new substantive system code changes authorized.
+
+### EV-0003 — 2026-11-24 — Partial contract approval and runtime investigation
+- Source: current conversation checkpoint 2.
+- Approved link/lib/js and NODE_PATH = JS_PATH. Browser and node_modules integration investigated; proposals remain unapproved.
+- Inspected pkg/context code and ran isolated Node 22.16.0 resolution probes. No source edits; STEP-01 remains in progress.
