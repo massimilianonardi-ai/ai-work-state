@@ -1,0 +1,11 @@
+event: stale_catalog_confirmed
+branch_id: 0
+message_id: 9
+task: "task:rsudo-deploy"
+task_event: EV-0016
+milestone: STEP-02
+status: refining
+operator_catalog_revision: "eacaa2ac25f1b7a983269e1af2b96bf3c921b4cf"
+authoritative_catalog_revision: "96a2d0ac27e07d541cc454ad6bfbe912e29f58af"
+stale_catalog_verified: true
+operator_retry_verified: false

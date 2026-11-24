@@ -45,7 +45,7 @@ Product source revision 05d1b08791a3f85c47b619a2f1169edbe5953332; product docume
 ## Relationships and readiness
 
 Parent null; dependencies [] (no verified separate dependency tasks created); children index empty; active plan plans/plan-001.yaml is a proposed planning revision, not execution permission. Task status independent of any future children.
-Specification: [task-specification.md](task-specification.md). Baseline: [baseline-v001.md](baseline-v001.md) (first actual task baseline, recorded now). Latest event EV-0015. Documentation-only design authorized and published; no new implementation/live access authorized. Next: acquisition review and execution-scope approval.
+Specification: [task-specification.md](task-specification.md). Baseline: [baseline-v001.md](baseline-v001.md) (first actual task baseline, recorded now). Latest event EV-0016. Documentation-only design authorized and published; no new implementation/live access authorized. Next: acquisition review and execution-scope approval.
 
 ## STEP-02 progress — 2026-11-24, resumed checkpoint 0/2
 
@@ -74,3 +74,7 @@ Operator attempted uninstall/install; v0.1.4 selected and archive downloaded (39
 ## STEP-02 repeated installation failure — checkpoint 0/8
 
 Second operator install attempt still fails status 18; operator checkout HEAD matches successful clean CI m-os revision 359469c59633f90c5f81e7825712544a15467c37, but malformed .gitattributes warning persists. Verified remote pkg-catalog/main still at corrected 96a2d0ac27e07d541cc454ad6bfbe912e29f58af. Source pkg_catalog_init uses configured state-path system sys pkg conf/catalog, persistent state-path system sys pkg cache/catalog, git remote set-url + pull --ff-only and git archive of cache HEAD; pull success does not prove same branch/revision or clean working-tree attributes. Actual runtime root, cache HEAD and exact pkg_integrate failure unknown. Provide focused read-only local catalog/runtime checks plus private traced retry of existing pkg_install library (operator-authorized installation, no source change); request limited sanitized trace around failing exit. No new product/catalog changes or release; no root cause claim. STEP-02 remains refining and blocked on operator installation.
+
+## STEP-02 stale catalog confirmed — checkpoint 0/9
+
+Operator reported clean local catalog cache main at eacaa2ac25f1b7a983269e1af2b96bf3c921b4cf with old attributes; local m-os runtime paths correspond to checkout. Remote pkg-catalog/main verified at 96a2d0ac27e07d541cc454ad6bfbe912e29f58af, exactly two commits ahead, containing v0.1.4 range and corrected attributes. Stale catalog is verified; old final open-ended range requires legacy Keycloak library absent from new package, consistent with definition validation failure, exact local failing instruction not traced. Recommend check configured catalog origin/source (local checkout may be stale), update it or fast-forward clean cache explicitly from authoritative remote, verify new range before retry; no forced reset, delete, installer modification or additional release. Actual cause of stale origin and successful operator retry not yet verified. STEP-02 remains refining.
