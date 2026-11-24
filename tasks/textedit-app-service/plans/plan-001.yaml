@@ -1,0 +1,30 @@
+id: "plan-001"
+task: "task:textedit-app-service"
+revision: 1
+supersedes: null
+steps:
+  - "task:m-os-context-js-libs"
+milestones:
+  - id: STEP-01
+    after: []
+    deliverable: "Engine and GUI extraction; clean m-js-core; web host"
+    artifacts: ["m-js-textedit", "m-js-textedit-gui", "m-textedit-web", "m-js-core"]
+    checks: ["source parity and namespace", "real mk build/test/run and Chromium"]
+    status: partial
+  - id: STEP-02
+    after: [STEP-01]
+    deliverable: "Initial released and independently installed JS libraries plus web host"
+    checks: ["dependency task accepted", "clean installed runtime without source checkout", "local-only edit versus unchanged installed release", "controlled explicit upgrade"]
+    status: blocked
+  - id: STEP-03
+    after: [STEP-02]
+    deliverable: "Electron desktop using identical engine and GUI"
+    checks: ["local and installed runtime", "shared source change and release isolation"]
+    status: planned
+  - id: STEP-04
+    after: [STEP-03]
+    deliverable: "Direct general m-js-core dependency in both apps"
+    checks: ["local/installed combinations", "version and class identity", "clean installed-only acceptance"]
+    status: planned
+parallel_groups: []
+completion_gates: ["UC-01 through UC-05 verified; no source checkout or build tools at runtime"]

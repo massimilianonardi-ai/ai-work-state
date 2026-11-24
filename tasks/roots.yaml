@@ -1,3 +1,5 @@
 roots:
   - "task:aw-test-persistence-20261118-01"
   - "task:rsudo-deploy"
+  - "task:textedit-app-service"
+  - "task:m-os-context-js-libs"

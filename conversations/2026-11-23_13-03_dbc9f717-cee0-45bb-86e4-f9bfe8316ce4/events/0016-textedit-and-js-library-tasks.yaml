@@ -1,0 +1,4 @@
+event_id: 0016
+at: "2026-11-24T13:15:53+01:00"
+kind: task_registration
+summary: "Operator requested TextEdit task and delegated infrastructure task partition. Two independent root tasks registered: task:textedit-app-service depends on task:m-os-context-js-libs. Prior source implementation preserved; infrastructure specification refining, no new product code."

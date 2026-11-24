@@ -1,0 +1,28 @@
+id: "plan-001"
+task: "task:m-os-context-js-libs"
+revision: 1
+supersedes: null
+steps: []
+milestones:
+  - id: STEP-01
+    after: []
+    deliverable: "Inspect native resolution and current context/pkg/mk/JSC interfaces; compare feasible alternatives"
+    checks: ["actual source and official runtime contracts", "minimal representative probes", "scope and compatibility impact"]
+    status: planned
+  - id: STEP-02
+    after: [STEP-01]
+    deliverable: "Consolidated contract and architecture recommendation for operator approval"
+    checks: ["local and installed selection", "Node and browser/Electron integration", "version and security semantics"]
+    status: planned
+  - id: STEP-03
+    after: [STEP-02]
+    deliverable: "Authorized implementation and tests in responsible components"
+    checks: ["operator approval of new contract", "existing compatibility", "actual source and package runtime checks"]
+    status: planned
+  - id: STEP-04
+    after: [STEP-03]
+    deliverable: "Verified reusable integration contract and handoff to TextEdit"
+    checks: ["clean installation, source/local vs installed version selection, no regressions"]
+    status: planned
+parallel_groups: []
+completion_gates: ["UC-01 through UC-06 observed within approved scope"]
