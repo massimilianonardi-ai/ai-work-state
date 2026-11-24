@@ -1,0 +1,12 @@
+event: acquisition_design_published
+branch_id: 0
+message_id: 2
+task: "task:rsudo-deploy"
+task_event: EV-0009
+product_revision: "a90b0ed9be31ef37d63a79ec492dcb2f3a742b4f"
+phase: architecture
+status: refining
+milestone: STEP-02
+milestone_progress: design_proposed_collection_pending
+live_access_authorized: false
+implementation_authorized: false

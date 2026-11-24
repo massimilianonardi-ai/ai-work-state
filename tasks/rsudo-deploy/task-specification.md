@@ -48,11 +48,15 @@ See product use-cases.md, acceptance.md and scenario-01-acceptance.md (SCN-A01�
 | CLI/menu boundary and protected rsudo components | Approved; old wrapper superseded, must be replaced when authorized |
 | Initial scenario and ownership | Approved D01–D08; actual installed configuration unverified |
 | Conceptual resources and authority classes | Proposed resource-model.md; areas not file/module count |
-| Initial read-only export/import | Required scope approved; exact acquisition contract and execution not yet approved |
+| Initial read-only export/import | Required scope approved; concrete acquisition contract proposed at product revision a90b0ed9be31ef37d63a79ec492dcb2f3a742b4f; execution not yet approved |
 | JSON resource schema, identifiers, native mapping, dependencies, CLI grammar | Unresolved engineering design |
 | Plan immutability/freshness, approval binding, retries/resume, failure and logging policy | Proposed principles, detailed contracts pending |
 | Concrete access/permissions/capabilities and external behavior | Need separately authorized collection and tests |
 | Release/live operations | Not authorized here |
 
 ## Readiness and next action
-Functional scope settled (L1–L3); L4 in progress. Need concrete acquisition plan (outputs, permitted commands, targets, redaction, storage, completeness and errors) before actual collection. Review real evidence before fixing JSON, then L4–L8 synthesis and explicit approval for further code. Do not repeat D01–D08 interview. Do not treat registration as permission to develop or deploy. No verified dependent tasks yet.
+Functional scope settled (L1–L3); L4 in progress. Concrete acquisition plan now documented; review and approve actual target scope, runner/access, session policy, private storage and limits before actual collection. Review real evidence before fixing JSON, then L4–L8 synthesis and explicit approval for further code. Do not repeat D01–D08 interview. Do not treat registration as permission to develop or deploy. No verified dependent tasks yet.
+
+## STEP-02 progress — 2026-11-24, resumed checkpoint 0/2
+
+Concrete initial acquisition design published and read back at [product revision a90b0ed9be31ef37d63a79ec492dcb2f3a742b4f](https://github.com/massimilianonardi-ai/m-rsudo/tree/a90b0ed9be31ef37d63a79ec492dcb2f3a742b4f/doc/deploy). Three documents define private manifest, staged preflight, bounded read operation catalog, session/secret boundaries, evidence/coverage and planned tests. Product source unchanged; no collector code, actual connection, server read, deployment, or test execution. Functional baseline and plan milestones unchanged; STEP-02 design portion delivered as a proposal, collection pending. Architecture remains refining. Next gate: review the proposed approach and confirm authorized runner context, target/group scope, identity/session effects, private storage and limits. Implementation of a collector requires appropriate code authorization; real collection requires separately explicit scope. Do not proceed to final desired JSON schema before actual observations.
