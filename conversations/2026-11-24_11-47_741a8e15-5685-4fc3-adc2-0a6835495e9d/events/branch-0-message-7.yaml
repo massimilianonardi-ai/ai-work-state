@@ -1,0 +1,12 @@
+event: package_installation_diagnosis
+branch_id: 0
+message_id: 7
+task: "task:rsudo-deploy"
+task_event: EV-0014
+milestone: STEP-02
+status: refining
+operator_install_status: 18
+catalog_revision: "96a2d0ac27e07d541cc454ad6bfbe912e29f58af"
+installation_ci_run: 45404172213
+clean_install_verified: true
+operator_root_cause_confirmed: false
