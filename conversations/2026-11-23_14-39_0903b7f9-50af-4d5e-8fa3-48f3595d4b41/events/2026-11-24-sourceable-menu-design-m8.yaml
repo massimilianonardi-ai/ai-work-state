@@ -1,0 +1,13 @@
+at_utc: "2026-11-24T06:45:52.955Z"
+kind: architecture_design_refined
+source_checkpoint: 7
+checkpoint: 8
+phase: specification
+user_proposal:
+  sourceable_library: "rsudo-deploy.lib.sh"
+  admin_integration: "source library and invoke menu function inside subshell"
+  standalone_command: "rsudo-deploy optionally thin wrapper; no args menu, args forward to rsudo deploy"
+recommendation: "use separate side-effect-free sourceable library and keep thin executable for standalone menu"
+evidence: "POSIX sh subshell inherits nonexported credentials and isolates state; independent shell process does not; m-rsudo source and dispatch reviewed"
+remaining_design_issue: "defer remote auth for local deploy dispatch without weakening remote execution"
+status: "proposed, unimplemented"
