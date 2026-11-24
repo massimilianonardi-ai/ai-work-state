@@ -1,0 +1,11 @@
+at_utc: "2026-11-24T10:18:05.309Z"
+kind: scenario_requirements_refined_and_conceptual_model_proposed
+source_checkpoint: 13
+checkpoint: 14
+phase: architecture
+product_repository: "massimilianonardi-ai/m-rsudo"
+product_commit: "27705b4ac4dedb1bc4f1ee2d178d9efa7c3ec57a"
+product_changes: "12 deployment documentation files"
+status: "D01-D08 answered; resource model and read-only initial acquisition proposed; runtime discovery pending"
+code_changed: false
+remote_operations: false
