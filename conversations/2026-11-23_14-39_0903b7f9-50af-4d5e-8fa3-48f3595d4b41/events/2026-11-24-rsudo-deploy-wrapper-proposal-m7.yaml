@@ -1,0 +1,16 @@
+at_utc: "2026-11-24T06:38:07.865Z"
+kind: architecture_alternative_refined
+source_checkpoint: 6
+checkpoint: 7
+phase: specification
+user_proposal:
+  repository: "m-rsudo"
+  cli: "rsudo deploy <args>"
+  wrapper_menu: "rsudo-deploy (no arguments)"
+  wrapper_cli: "rsudo-deploy <args> -> rsudo deploy <args>"
+  admin: "single Deploy menu item invoking external rsudo-deploy"
+assessment: "prefer proposal for maximal rsudo-admin decoupling"
+verified_blocker: "external child process does not inherit non-exported credential groups from rsudo-admin; independent encrypted file loading advised"
+other_constraint: "rsudo validates remote credentials before local module dispatch; preserve authorization for all remote effects"
+approval_status: "proposal evaluated; awaiting user approval"
+product_code_changed: false
