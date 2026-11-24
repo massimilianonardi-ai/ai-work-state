@@ -45,7 +45,7 @@ Product source revision 05d1b08791a3f85c47b619a2f1169edbe5953332; product docume
 ## Relationships and readiness
 
 Parent null; dependencies [] (no verified separate dependency tasks created); children index empty; active plan plans/plan-001.yaml is a proposed planning revision, not execution permission. Task status independent of any future children.
-Specification: [task-specification.md](task-specification.md). Baseline: [baseline-v001.md](baseline-v001.md) (first actual task baseline, recorded now). Latest event EV-0010. Documentation-only design authorized and published; no new implementation/live access authorized. Next: acquisition review and execution-scope approval.
+Specification: [task-specification.md](task-specification.md). Baseline: [baseline-v001.md](baseline-v001.md) (first actual task baseline, recorded now). Latest event EV-0011. Documentation-only design authorized and published; no new implementation/live access authorized. Next: acquisition review and execution-scope approval.
 
 ## STEP-02 progress — 2026-11-24, resumed checkpoint 0/2
 
@@ -54,3 +54,7 @@ Concrete initial acquisition design published and read back at [product revision
 ## STEP-02 smoke-test scope — checkpoint 0/3
 
 Operator approved rsudo-admin > rsudo jobs, local output redirection and a bounded read-only test of existing adapters before designing a full collector. APISIX: SSL resources, services, routes; Keycloak: realm list/details, LDAP provider configuration and clients. Deliver inline source-only helper library and job template for operator execution, not product code; use existing credential groups and existing Keycloak CLI session. Actual target references and executable/config paths remain operator-local, not inferred. APISIX native response includes HTTP headers; extract/validate JSON locally. Keycloak native get produces JSON. First-page collection for paginated lists is a smoke test, not comprehensive export or re-import contract; known secret fields excluded and outputs private. No import, mutation, protected module changes or remote login performed by assistant. Actual execution/results pending operator run; review sanitized status/counts before expanding acquisition. Architecture and baseline unchanged; no full collector or deployment implementation approval inferred.
+
+## STEP-02 first smoke-test result — checkpoint 0/4
+
+Operator returned first smoke-test summary. All three APISIX GET operations and Keycloak realm GET failed with status 16 in approximately one second; no JSON artifacts. LDAP/client reads skipped. Native dispatcher at m-rsudo@a90b0ed9be31ef37d63a79ec492dcb2f3a742b4f returns 16 when delegated function is unavailable; actual stderr and selected installed concrete are not yet inspected, so cause remains provisional. Request sanitized stderr for APISIX routes and Keycloak realms and optionally a local-only module resolution check. No retry, protected code edit, new dependency task, or claim of API/auth/transport failure. STEP-02 still refining; resolve installed module availability before further collection.

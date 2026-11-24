@@ -1,0 +1,12 @@
+event: acquisition_smoke_test_failed
+branch_id: 0
+message_id: 4
+task: "task:rsudo-deploy"
+task_event: EV-0011
+milestone: STEP-02
+phase: architecture
+status: refining
+read_attempts_failed: 4
+exit_status: 16
+json_artifacts: 0
+root_cause_confirmed: false
