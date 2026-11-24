@@ -1,0 +1,7 @@
+message_id: 8
+branch_id: 0
+event: task_requirements_refined
+task: "task:m-os-context-js-libs"
+phase: specification
+baseline: baseline-v004.md
+approved: "State runtime view through existing launcher; evaluate hard links if symlinks incompatible"

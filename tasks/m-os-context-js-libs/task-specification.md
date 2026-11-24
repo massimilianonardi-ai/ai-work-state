@@ -19,7 +19,7 @@ source:
 ---
 
 # Task specification — m-os context js libs
-Status: refining; [baseline-v003.md](baseline-v003.md) captures partial approval, not authorization for all system changes.
+Status: refining; [baseline-v004.md](baseline-v004.md) captures partial approval, not authorization for all system changes.
 
 ## Objective
 A general, simple and robust method for selecting versioned JavaScript libraries from source builds and installed packages, making them available to Node.js, browser and Electron consumers without forcing application source changes for development vs production.
@@ -65,3 +65,11 @@ Operator prefers native node_modules and removing NODE_PATH if feasible. This co
 - Proposed: mk prepares app-specific generated symlinks after local dependency builds before relevant actions; installed launch prepares or uses context-specific projection independently of mk. Do not mutate shared installed immutable package roots at runtime, overwrite npm entries, or share a mutable view across incompatible concurrent contexts. Exact owner/location TBD.
 - Executed isolated Node v22.16.0 ESM probe with NODE_PATH unset: app/node_modules/a and b symlink to separate real package roots; a imports b. Default fails ERR_MODULE_NOT_FOUND; --preserve-symlinks succeeds; a real package root with its own node_modules/b symlink also succeeds. Per-package links would need an appropriate immutable/install-time or isolated graph, not shared mutable roots. Flag has native-addon/module identity caveats; validate Electron and main-entry behavior. https://nodejs.org/download/release/v22.18.0/docs/api/cli.html ; https://nodejs.org/api/modules.html .
 - Browser still needs public URL projection/import map; reuse same selected graph, not expose entire node_modules. Determine whether JS_PATH adds value once graph available. No product code changed.
+
+## Approved architecture — checkpoint 8
+- Application runtime view in m-os state, usable via existing launcher; reuse preparation in mk for development. Preserve installed package immutability and context-specific selection.
+- Investigate symlink realization first; seriously consider hard links if incompatible. No final materialization policy, exact state location, runtime declaration or browser/Electron contract approved yet.
+- NODE_PATH removal remains conditional on native resolution feasibility. No product implementation authorized beyond the approved concept until complete synthesis.
+
+## Isolated verification — checkpoint 8
+Actually executed Node v22.16.0 in temporary directories. Separate app, a and b roots; ESM app imports a, a imports b; NODE_PATH and NODE_OPTIONS removed. State view of symlinks: default failed ERR_MODULE_NOT_FOUND; preserve-symlinks-main alone failed; both preservation flags passed (a:b). State view with real directories and hard-linked regular files passed with no flags (a:b); verified shared inode, same device. Hard links require same filesystem, platform/permissions support, cannot hard-link directories; modification/chmod through a link affects original inode. Do not allow mutable view to bypass package immutability; validate ownership and write authority, development rebuild atomic replacement can stale hardlinks; no hardlink fallback selected automatically. Electron unavailable in local environment; browser/Electron and m-os launch integration not tested. Next verify runtime contract and topology, provider resolution, safe immutable view lifecycle and web public projection; propose concrete policy before code changes.

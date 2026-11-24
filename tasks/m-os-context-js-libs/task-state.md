@@ -34,7 +34,7 @@ Resolve the general JS-library selection and loading contract for development an
 - User explicitly delegated whether to create separate task; creation is authorized, architecture changes not yet approved.
 No code changes. link/lib/js and NODE_PATH = JS_PATH approved at checkpoint 2; node_modules projection, export shapes and browser adapter remain proposals.
 
-Baseline [v003](baseline-v003.md); [specification](task-specification.md); proposed plan plans/plan-001.yaml; latest EV-0004.
+Baseline [v004](baseline-v004.md); [specification](task-specification.md); proposed plan plans/plan-001.yaml; latest EV-0005.
 
 ## Approved decisions — checkpoint 2 (2026-11-24)
 - pkg v2 declarative export namespace: `link/lib/js`.
@@ -43,3 +43,11 @@ Baseline [v003](baseline-v003.md); [specification](task-specification.md); propo
 
 ## Checkpoint 3 — revised direction
 Operator prefers native node_modules and removing NODE_PATH if feasible. This conditionally supersedes the earlier NODE_PATH = JS_PATH requirement. Do not build a dual resolution mechanism. Retain link/lib/js; JS_PATH retained provisionally for runtime-neutral discovery/browser pending necessity assessment. No approval yet of detailed projection lifecycle or dependency layout.
+
+## Approved architecture — checkpoint 8
+- Application runtime view in m-os state, usable via existing launcher; reuse preparation in mk for development. Preserve installed package immutability and context-specific selection.
+- Investigate symlink realization first; seriously consider hard links if incompatible. No final materialization policy, exact state location, runtime declaration or browser/Electron contract approved yet.
+- NODE_PATH removal remains conditional on native resolution feasibility. No product implementation authorized beyond the approved concept until complete synthesis.
+
+## Isolated verification — checkpoint 8
+Actually executed Node v22.16.0 in temporary directories. Separate app, a and b roots; ESM app imports a, a imports b; NODE_PATH and NODE_OPTIONS removed. State view of symlinks: default failed ERR_MODULE_NOT_FOUND; preserve-symlinks-main alone failed; both preservation flags passed (a:b). State view with real directories and hard-linked regular files passed with no flags (a:b); verified shared inode, same device. Hard links require same filesystem, platform/permissions support, cannot hard-link directories; modification/chmod through a link affects original inode. Do not allow mutable view to bypass package immutability; validate ownership and write authority, development rebuild atomic replacement can stale hardlinks; no hardlink fallback selected automatically. Electron unavailable in local environment; browser/Electron and m-os launch integration not tested. Next verify runtime contract and topology, provider resolution, safe immutable view lifecycle and web public projection; propose concrete policy before code changes.
