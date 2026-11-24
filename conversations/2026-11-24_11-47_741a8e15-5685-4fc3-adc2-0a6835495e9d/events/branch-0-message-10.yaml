@@ -1,0 +1,9 @@
+event: runtime_context_lookup_failure
+branch_id: 0
+message_id: 10
+task: "task:rsudo-deploy"
+task_event: EV-0017
+milestone: STEP-02
+status: refining
+library_lookup_status: 5
+operator_runtime_verified: false
