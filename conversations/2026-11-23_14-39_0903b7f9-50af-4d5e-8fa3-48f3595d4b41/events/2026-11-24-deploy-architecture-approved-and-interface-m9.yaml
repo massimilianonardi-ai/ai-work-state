@@ -1,0 +1,20 @@
+at_utc: "2026-11-24T07:09:33.324Z"
+kind: design_approved_and_interface_milestone_delivered
+source_checkpoint: 8
+checkpoint: 9
+user_approved:
+  product_repository: "massimilianonardi-ai/m-rsudo"
+  cli: "rsudo deploy <args>"
+  standalone_menu: "rsudo-deploy without args"
+  wrapper: "rsudo-deploy <args> -> rsudo deploy <args>"
+  admin_integration: "source rsudo-deploy.lib.sh and call menu in subshell"
+  credential_boundary: "existing rsudo security and unattended credential model is authoritative; do not redesign/retest it"
+product:
+  repository: "massimilianonardi-ai/m-rsudo"
+  commit: "05d1b08791a3f85c47b619a2f1169edbe5953332"
+  scope: "first CLI/menu integration slice only; help and credential-group menu, no deployment resource operations"
+verification:
+  result: "CI passed on Ubuntu and macOS with synthetic new-interface tests"
+  workflow_run: "https://github.com/massimilianonardi-ai/m-rsudo/actions/runs/45345542189"
+no_live_deployment: true
+release_created: false
