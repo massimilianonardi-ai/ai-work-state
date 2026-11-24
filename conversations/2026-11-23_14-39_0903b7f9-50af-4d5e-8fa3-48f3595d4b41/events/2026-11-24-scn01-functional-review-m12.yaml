@@ -1,0 +1,13 @@
+at_utc: "2026-11-24T09:18:20.816Z"
+kind: first_scenario_specification_prepared
+source_checkpoint: 11
+checkpoint: 12
+phase: specification
+product_repository: "massimilianonardi-ai/m-rsudo"
+product_commit: "8809c2bd3409d49ac56cd2bf04a7a6392075cbaf"
+product_changes: "8 documentation files only; 4 new scenario documents"
+source_review_baseline: "c69da1ee14cf9c44cb8f9d40ac1b595608e78359"
+status: "functional scenario and 12 acceptance cases proposed; actual environment unknown"
+open_operator_decisions: ["topology and URL/DNS/TLS scope", "authentication/authorization and identity ownership", "content source and hosting ownership", "ownership and adoption of existing resources"]
+remote_operations: false
+code_changed: false
