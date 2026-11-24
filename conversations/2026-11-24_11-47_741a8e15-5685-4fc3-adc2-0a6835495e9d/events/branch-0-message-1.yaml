@@ -1,0 +1,11 @@
+event: task_resumed
+branch_id: 0
+message_id: 1
+task: "task:rsudo-deploy"
+source_state_revision: "95cf41dd4ed396d1496b1c902007e43938a7ee6a"
+source_task_event: "EV-0008"
+phase: architecture
+status: refining
+next_milestone: "STEP-02"
+product_revision: "27705b4ac4dedb1bc4f1ee2d178d9efa7c3ec57a"
+execution_authorized: false
